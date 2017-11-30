@@ -8,10 +8,12 @@ window._ = require('lodash');
  */
 
 try {
-    window.$ = window.jQuery = require('jquery');
+	window.$ = window.jQuery = require('jquery');
 
-    require('bootstrap-sass');
+	window.Popper = require('popper.js').default;
+	require('bootstrap');
 } catch (e) {}
+
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -29,13 +31,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * a simple convenience so we don't have to attach every token manually.
  */
 
-// let token = document.head.querySelector('meta[name="csrf-token"]');
-//
-// if (token) {
-//     window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-// } else {
-//     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-// }
+let token = document.head.querySelector('meta[name="csrf-token"]');
+
+if (token) {
+	window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+	console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

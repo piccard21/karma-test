@@ -13,17 +13,17 @@
     },
     "devDependencies": {
         "axios": "^0.17",
-        "bootstrap-sass": "^3.3.7",
+        "bootstrap": "^4.0.0-beta",
         "cross-env": "^5.1",
         "jasmine-core": "^2.8.0",
         "jquery": "^3.2",
         "karma": "^1.7.1",
-        "karma-chrome-launcher": "^2.2.0",
         "karma-jasmine": "^1.1.0",
         "karma-nyan-reporter": "^0.2.5",
         "karma-phantomjs-launcher": "^1.0.4",
         "laravel-mix": "^1.0",
         "lodash": "^4.17.4",
+        "popper.js": "^1.12.9",
         "vue": "^2.5.7",
         "yargs": "^10.0.3"
     }
