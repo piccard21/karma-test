@@ -1,3 +1,46 @@
+# Usage
+
+  ```
+	{{--input-chip-component: COLOR--}}
+	<div class="form-group">
+	    <label for="input-chip-component-color" style="display: block">Input-Chip: color</label>
+	    <div id="input-chip-component-color">
+	        <input-chip v-model="whatever" chip-type="info" @chip_added="test_chip_added"></input-chip>
+	    </div>
+	    <small id="" class="chip-hint">Lorem ipsum dolor set amed</small>
+	</div>
+  ```
+  
+  
+  ```
+	  new Vue({
+	    el: "#input-chip-component-color",
+	    // template: '#chip-test-template',
+	    components: {
+	        InputChip
+	    },
+	  
+	    data: {
+	        whatever: ["hallo", "out", "there"]
+	    },
+	  
+	    methods: {
+	        test_chip_added(args) {
+	            console.info('test_chip_added', args);
+	        }
+	    },
+	    computed: {},
+	  
+	    created() {
+	        console.info("created")
+	    },
+	    mounted() {
+	        console.info("mounted")
+	    }
+	  })
+  ```
+
+
 # Bootstrap 4
 * [see](https://sutherlandboswell.com/upgrading-to-bootstrap-4-in-laravel-5-5/)
 
