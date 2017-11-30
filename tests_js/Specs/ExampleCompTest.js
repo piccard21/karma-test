@@ -22,13 +22,13 @@ describe('ExampleComponent', () => {
 	})
 
 	// Inspect the component instance on mount
-	it('correctly sets the message when created', () => {
+	it('correctly sets the message when >mounted<', () => {
 		const vm = new Vue(ExampleComponent).$mount()
-		expect(vm.message).toBe('bye!')
+		expect(vm.message).toBe('bye, bye!')
 	})
 
 	// Mount an instance and inspect the render output
-	it('renders the correct message', () => {
+	it('renders the correct message when >created<' , () => {
 		const Ctor = Vue.extend(ExampleComponent)
 		const vm = new Ctor().$mount()
 		expect(vm.$el.textContent).toBe('bye!')

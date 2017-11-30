@@ -1,16 +1,18 @@
 <template>
-    <div class="testinger">
-       <h1>I'm an example component!</h1>
-    </div>
+    <span><h1>{{ message }}</h1></span>
 </template>
-
 <script>
-    export default {
-	    created() {
-		    console.log('################################# Component created.')
-	    },
-        mounted() {
-            console.log('################################# Component mounted.')
-        }
-    }
+	export default {
+		data () {
+			return {
+				message: 'hello!'
+			}
+		},
+		created () {
+			this.message = 'bye!'
+		},
+		mounted() {
+			this.message = 'bye, bye!'
+		}
+	}
 </script>
