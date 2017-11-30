@@ -40,6 +40,19 @@
 	  })
   ```
 
+* automatic transpile?????
+  * in package.json 
+    * npm i -D babel-presets-es2015
+  
+  ```
+  "ava": {
+   "require": ["babel-register"]
+  },
+  "babel": {
+    "presets": ["es2015"]
+  }
+  ```
+
 
 # Bootstrap 4
 * [see](https://sutherlandboswell.com/upgrading-to-bootstrap-4-in-laravel-5-5/)
