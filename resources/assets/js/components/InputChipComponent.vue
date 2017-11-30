@@ -1,7 +1,7 @@
 <template>
 	<div class="chip-wrapper form-control">
 		<chip-component v-for="(chip, i) in chips" :type="chipType" :key="chip" :value="chip" @delete="deleteChip(i)"></chip-component>
-		<input class="chip-input" type="text" :value="chipValue" @keyup.enter="updateChip($event.target.value)" ref="inputchip" placeholder="Enter ...">
+		<input class="chip-input" type="text" :value="chipValue" @keyup.enter="updateChip($event.target.value)" @keyup.space="updateChip($event.target.value)" ref="inputchip" placeholder="Enter ...">
 	</div>
 </template>
 
