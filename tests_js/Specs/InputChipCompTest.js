@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import InputChip from '../../resources/assets/js/components/InputChipComponent.vue'
 
-describe('InputChip', () => {
+describe('InputChip initial', () => {
 
 	beforeEach(() => {
 		this.vm = new Vue(InputChip);
@@ -20,37 +20,34 @@ describe('InputChip', () => {
 	it('instance mounts correctly', () => {
 		expect(this.vm.$el).toEqual(jasmine.any(Element));
 	});
+});
 
-	// it('loads and extends models correctly', done => {
-	// 	this.vm.$_dataModel_load({});
-	// 	// watch (extend value!) is executed in next tick!
-	// 	this.vm.$nextTick(() => {
-	// 		expect(this.vm.value.hasOwnProperty('name')).toBeTruthy();
-	// 		done();
-	// 	});
-	// });
-	//
-	// it('decoupled instance loads correctly', () => {
-	// 	expect(this.vm).not.toEqual(jasmine.any(Vue));
-	// });
-	//
-	// describe('InputChip:Instance', () => {
-	//
-	// 	beforeEach(() => {
-	// 		this.vm.$mount();
-	// 	});
-	//
-	// 	it('instance mounts correctly', () => {
-	// 		expect(this.vm.$el).toEqual(jasmine.any(Element));
-	// 	});
-	//
-	// 	it('loads and extends models correctly', done => {
-	// 		this.vm.$_dataModel_load({});
-	// 		// watch (extend value!) is executed in next tick!
-	// 		this.vm.$nextTick(() => {
-	// 			expect(this.vm.value.hasOwnProperty('name')).toBeTruthy();
-	// 			done();
-	// 		});
-	// 	});
-	// });
+describe('InputChip props', () => {
+
+	beforeEach(() => {
+		this.vm = new Vue(InputChip);
+		this.vm.$mount();
+	});
+
+	afterEach(() => {
+		this.vm.$destroy();
+	});
+
+
+
+
+	// Mount an instance and inspect the render output (created)
+	it('props' , () => {
+		// build component
+		const Constructor = Vue.extend(InputChip)
+		let vm = new Constructor({
+			propsData: {
+				"chip-type": "danger"
+			}
+		}).$mount();
+
+
+		// set value of new item
+		vm.
+	})
 });

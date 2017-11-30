@@ -1414,7 +1414,8 @@ var app = new Vue({
 
 
 
-var comp = new Vue({
+// empty
+new Vue({
 	el: "#input-chip-component-empty",
 	components: {
 		InputChip: __WEBPACK_IMPORTED_MODULE_0__components_InputChipComponent_vue___default.a
@@ -1422,9 +1423,62 @@ var comp = new Vue({
 	methods: {},
 	computed: {},
 
-	created: function created() {},
-	mounted: function mounted() {}
+	created: function created() {
+		console.info("created");
+	},
+	mounted: function mounted() {
+		console.info("mounted");
+	}
 });
+
+// color
+new Vue({
+	el: "#input-chip-component-color",
+	// template: '#chip-test-template',
+	components: {
+		InputChip: __WEBPACK_IMPORTED_MODULE_0__components_InputChipComponent_vue___default.a
+	},
+
+	data: {
+		initialChips: ["hallo", "out", "there"]
+	},
+
+	methods: {
+		test_chip_added: function test_chip_added(args) {
+			console.info('test_chip_added', args);
+		}
+	},
+	computed: {},
+
+	created: function created() {
+		console.info("created");
+	},
+	mounted: function mounted() {
+		console.info("mounted");
+	}
+});
+
+// initial values
+// new Vue({
+// 	el: "#input-chip-component-initial-values",
+// 	components: {
+// 		InputChip
+// 	},
+//
+// 	data: {
+// 		initialChips: ["hallo", "out", "there"]
+// 	},
+//
+// 	methods: {},
+// 	computed: {},
+//
+// 	created() {
+// 		console.info("created")
+// 	},
+// 	mounted() {
+// 		console.info("mounted")
+// 	}
+// })
 
 /***/ }),
 /* 14 */
@@ -1462,13 +1516,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * a simple convenience so we don't have to attach every token manually.
  */
 
-var token = document.head.querySelector('meta[name="csrf-token"]');
-
-if (token) {
-  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
-} else {
-  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
-}
+// let token = document.head.querySelector('meta[name="csrf-token"]');
+//
+// if (token) {
+// 	window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+// } else {
+// 	console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+// }
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
@@ -47290,7 +47344,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			event.preventDefault();
 
 			// validation
-			if (chipValue.length < 1) {
+			if (chipValue.trim().length < 1) {
 				return;
 			}
 
@@ -47511,15 +47565,26 @@ var render = function() {
         attrs: { type: "text", placeholder: "Enter ..." },
         domProps: { value: _vm.chipValue },
         on: {
-          keyup: function($event) {
-            if (
-              !("button" in $event) &&
-              _vm._k($event.keyCode, "enter", 13, $event.key)
-            ) {
-              return null
+          keyup: [
+            function($event) {
+              if (
+                !("button" in $event) &&
+                _vm._k($event.keyCode, "enter", 13, $event.key)
+              ) {
+                return null
+              }
+              _vm.updateChip($event.target.value)
+            },
+            function($event) {
+              if (
+                !("button" in $event) &&
+                _vm._k($event.keyCode, "space", 32, $event.key)
+              ) {
+                return null
+              }
+              _vm.updateChip($event.target.value)
             }
-            _vm.updateChip($event.target.value)
-          }
+          ]
         }
       })
     ],

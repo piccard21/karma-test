@@ -41,17 +41,33 @@
   ```
 
 * automatic transpile?????
-  * in package.json 
+  * (see)[https://laracasts.com/series/learn-vue-2-step-by-step/episodes/30?autoplay=true]
     * npm i -D babel-presets-es2015
+    * npm i -D browser-env
   
+  * package.json 
   ```
   "ava": {
-   "require": ["babel-register"]
+   "require": [
+    "babel-register",
+    "./test/helpers/setup-browser-env.js"
+   ]
   },
   "babel": {
     "presets": ["es2015"]
   }
   ```
+  
+  
+  * setup-browser-env.js
+  
+  ```
+ import browserEnv from 'browser-env'
+  ```
+  
+ import Vue from 'vue/dist/vue.js'
+
+  
 
 
 # Bootstrap 4

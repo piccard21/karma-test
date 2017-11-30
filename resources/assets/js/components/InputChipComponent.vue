@@ -46,7 +46,7 @@
 				event.preventDefault();
 
 				// validation
-				if (chipValue.length < 1) {
+				if (chipValue.trim().length < 1) {
 					return;
 				}
 

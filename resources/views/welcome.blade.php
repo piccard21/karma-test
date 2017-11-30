@@ -50,6 +50,15 @@
 	</div>
 
 
+	{{--input-chip-component: INITIAL-VALUES--}}
+	{{--<div class="form-group">--}}
+		{{--<label for="input-chip-component-initial-values" style="display: block">Input-Chip: color</label>--}}
+		{{--<div id="input-chip-component-initial-values">--}}
+			{{--<input-chip v-model="initialChips"  :chips="['Vue','Testing', 'is', 'Bullshit']" chip-type="danger"></input-chip>--}}
+		{{--</div>--}}
+		{{--<small id="" class="chip-hint">Lorem ipsum dolor set amed</small>--}}
+	{{--</div>--}}
+
 	<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
