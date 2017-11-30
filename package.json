@@ -9,8 +9,8 @@
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "test-compile": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js --env.suffix=test",
-        "test": "npm run test-compile & karma start tests_js/my.conf.js"
-	},
+        "test": "npm run test-compile & karma start tests_js/my.conf.js  --log-level debug"
+    },
     "devDependencies": {
         "axios": "^0.17",
         "bootstrap-sass": "^3.3.7",
@@ -20,6 +20,8 @@
         "karma": "^1.7.1",
         "karma-chrome-launcher": "^2.2.0",
         "karma-jasmine": "^1.1.0",
+        "karma-nyan-reporter": "^0.2.5",
+        "karma-phantomjs-launcher": "^1.0.4",
         "laravel-mix": "^1.0",
         "lodash": "^4.17.4",
         "vue": "^2.5.7",

@@ -2,7 +2,17 @@
 
 * **karma init** in *tests_js*
 * **npm i yargs -D**
+* **npm install --save-dev karma-nyan-reporter**
+* **npm install --save-dev karma-phantomjs-launcher**
 
+* change *browser* & *runner* option inside tests_js/my.conf.js
+
+  ```
+  browsers: ['PhantomJS'],
+  reporters: ['nyan'],
+  ```
+	  
+	  
 * 4 x webpack.mix-files
   * webpack.mix.js  
   ```
@@ -74,8 +84,9 @@
 * package.json
 
   ```
-  "test": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js --env.suffix=test"
-  ```
+        "test-compile": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js --env.suffix=test",
+        "test": "npm run test-compile & karma start tests_js/my.conf.js  --log-level debug --single-run"
+   ```
   
 * compile tests
   ```
