@@ -20,10 +20,12 @@
 
 
             <div class="container" style="margin-top: 2rem;">
+
                 {{--example-component--}}
                 <div id="example-component">
                     <example-component></example-component>
                 </div>
+
 	            <hr>
 
 

@@ -39,8 +39,10 @@ new Vue({
 	computed: {},
 
 	created() {
+		console.info("created")
 	},
 	mounted() {
+		console.info("mounted")
 	}
 })
 
