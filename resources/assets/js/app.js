@@ -61,18 +61,15 @@ new Vue({
 	components: {
 		InputChip
 	},
-
 	data: {
 		initialChips: ["hallo", "out", "there"]
 	},
-
 	methods: {
-		test_chip_added(args) {
-			console.info('test_chip_added', args);
+		test_chip_callback(args) {
+			console.info('test_chip_callback', args);
 		}
 	},
 	computed: {},
-
 	created() {
 		console.info("created")
 	},

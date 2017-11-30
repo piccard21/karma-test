@@ -45,13 +45,15 @@
 			updateChip(chipValue) {
 				event.preventDefault();
 
+				chipValue = chipValue.trim();
+
 				// validation
-				if (chipValue.trim().length < 1) {
+				if (chipValue.length < 1) {
 					return;
 				}
 
 				this.$emit("chip_add", chipValue);
-				this.chips.push(chipValue);
+				this.chips.push(chipValue.trim());
 				this.$emit("chip_added", chipValue);
 				this.$emit("chips_changed", this.chips);
 			},

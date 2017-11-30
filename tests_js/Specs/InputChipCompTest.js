@@ -13,9 +13,9 @@ describe('InputChip initial', () => {
 	});
 
 
-	it("karma is running", function() {
-		expect(true).toBe(true);
-	});
+	// it("karma is running", function() {
+	// 	expect(true).toBe(true);
+	// });
 
 	it('instance mounts correctly', () => {
 		expect(this.vm.$el).toEqual(jasmine.any(Element));
