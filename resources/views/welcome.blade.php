@@ -45,7 +45,7 @@
 	            <div class="form-group">
 		            <label for="input-chip-component-color" style="display: block">Input-Chip: color</label>
 		            <div id="input-chip-component-color">
-			            <input-chip v-model="whatever" chip-type="info" @chip_added="test_chip_added"></input-chip>
+			            <input-chip v-model="initialChips" chip-type="info" @chip_added="test_chip_added"></input-chip>
 		            </div>
 		            <small id="" class="chip-hint">Lorem ipsum dolor set amed</small>
 	            </div>

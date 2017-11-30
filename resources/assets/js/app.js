@@ -59,7 +59,7 @@ new Vue({
 	},
 
 	data: {
-		whatever: ["hallo", "out", "there"]
+		initialChips: ["hallo", "out", "there"]
 	},
 
 	methods: {
