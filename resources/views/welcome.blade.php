@@ -24,20 +24,33 @@
                 <div id="example-component">
                     <example-component></example-component>
                 </div>
+	            <hr>
 
 
-                {{--inpu-chip-component--}}
+                {{--input-chip-component: EMPTY--}}
                 <div class="form-group">
-                    <label for="input-chip-component-empty" style="display: block">Chippie Yah Yei</label>
-
+                    <label for="input-chip-component-empty" style="display: block">Input-Chip: empty</label>
                     <div id="input-chip-component-empty">
                         <input-chip></input-chip>
                     </div>
-
                     <small id="" class="chip-hint">Lorem ipsum dolor set amed</small>
                 </div>
 
                 <hr>
+
+
+	            {{--input-chip-component: COLOR--}}
+	            <div class="form-group">
+		            <label for="input-chip-component-color" style="display: block">Input-Chip: color</label>
+		            <div id="input-chip-component-color">
+			            <input-chip v-model="whatever" chip-type="info" @chip_added="test_chip_added"></input-chip>
+		            </div>
+		            <small id="" class="chip-hint">Lorem ipsum dolor set amed</small>
+	            </div>
+
+
+
+
 
             <script src="{{ asset('js/app.js') }}"></script>
     </body>

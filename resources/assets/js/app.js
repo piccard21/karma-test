@@ -30,7 +30,7 @@ const app = new Vue({
 
 import InputChip from './components/InputChipComponent.vue';
 
-let comp = new Vue({
+new Vue({
 	el: "#input-chip-component-empty",
 	components: {
 		InputChip
@@ -41,5 +41,36 @@ let comp = new Vue({
 	created() {
 	},
 	mounted() {
+	}
+})
+
+
+
+
+
+
+new Vue({
+	el: "#input-chip-component-color",
+	// template: '#chip-test-template',
+	components: {
+		InputChip
+	},
+
+	data: {
+		whatever: ["hallo", "out", "there"]
+	},
+
+	methods: {
+		test_chip_added(args) {
+			console.info('test_chip_added', args);
+		}
+	},
+	computed: {},
+
+	created() {
+		console.info("created")
+	},
+	mounted() {
+		console.info("mounted")
 	}
 })
