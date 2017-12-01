@@ -61,35 +61,13 @@ describe('InputChip props', () => {
 		expect(this.vm.$props.chips.length).toBe(2);
 		expect(this.vm.$props.chips.indexOf('def') > -1).toBeTruthy();
 	})
+
+	it('delete from prop: chips', () => {
+		this.vm = getCustomInstance(InputChip, {
+			chips: ['abc', 'def']
+		});
+
+		this.vm.chips.pop();
+		expect(this.vm.$props.chips.length).toBe(1);
+	});
 });
-
-
-
-
-// describe('InputChip props', () => {
-//
-// 	beforeEach(() => {
-// 		this.vm = new Vue(InputChip);
-// 		this.vm.$mount();
-// 	});
-//
-// 	afterEach(() => {
-// 		this.vm.$destroy();
-// 	});
-//
-//
-//
-//
-// 	// Mount an instance and inspect the render output (created)
-// 	// it('props' , () => {
-// 	// 	// build component
-// 	// 	const Constructor = Vue.extend(InputChip)
-// 	// 	let vm = new Constructor({
-// 	// 		propsData: {
-// 	// 			"chip-type": "danger"
-// 	// 		}
-// 	// 	}).$mount();
-// 	//
-// 	//
-// 	// })
-// });
