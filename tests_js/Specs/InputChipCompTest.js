@@ -40,12 +40,12 @@ describe('InputChip initial', () => {
 });
 
 
-describe('InputChip props', () => {
+describe('InputChip modify', () => {
 	afterEach(() => {
 		this.vm.$destroy();
 	});
 
-	it('set custom prop: chipType', () => {
+	it('set prop: chipType', () => {
 		this.vm = getCustomInstance(InputChip, {
 			chipType: 'danger'
 		});
@@ -53,7 +53,7 @@ describe('InputChip props', () => {
 		expect(this.vm.$props.chipType).toBe('danger');
 	})
 
-	it('set custom prop: chips', () => {
+	it('set prop: chips', () => {
 		this.vm = getCustomInstance(InputChip, {
 			chips: ['abc', 'def']
 		});
@@ -62,7 +62,7 @@ describe('InputChip props', () => {
 		expect(this.vm.$props.chips.indexOf('def') > -1).toBeTruthy();
 	})
 
-	it('delete from prop: chips', () => {
+	it('delete from props: chips', () => {
 		this.vm = getCustomInstance(InputChip, {
 			chips: ['abc', 'def']
 		});
@@ -70,4 +70,51 @@ describe('InputChip props', () => {
 		this.vm.chips.pop();
 		expect(this.vm.$props.chips.length).toBe(1);
 	});
+
+	it('chipType sets correct default-class', () => {
+		this.vm = getCustomInstance(InputChip, {
+			chips: ['abc']
+		});
+
+		expect(this.vm.$el.querySelector('.btn-warning')).not.toBeNull();
+
+		this.vm.chips.pop();
+
+		// wait a "tick" after state change before asserting DOM updates
+		Vue.nextTick(() => {
+			expect(this.vm.$el.querySelector('.btn-warning')).not.toBeNull();
+			done()
+		})
+	});
+
+
+	it('chipType sets correct class', () => {
+		this.vm = getCustomInstance(InputChip, {
+			chips: ['abc'],
+			chipType: 'info'
+		});
+
+		expect(this.vm.$el.querySelector('.btn-info')).not.toBeNull();
+
+		this.vm.chips.pop();
+
+		// wait a "tick" after state change before asserting DOM updates
+		Vue.nextTick(() => {
+			expect(this.vm.$el.querySelector('.btn-info')).not.toBeNull();
+			done()
+		})
+	})
+
+	// it('chipType sets correct class', () => {
+	// 	this.vm = getCustomInstance(InputChip, {
+	// 		chipType: 'danger',
+	// 		chips: ['abc']
+	// 	});
+	//
+	// 	expect(this.vm.$el.querySelector('.btn-danger')).not.toBeNull();
+	//
+	// 	this.vm.chips.pop();
+	// 	expect(this.vm.$el.querySelector('.btn-danger')).toBeNull();
+	//
+	// })
 });

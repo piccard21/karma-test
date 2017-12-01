@@ -1438,18 +1438,15 @@ new Vue({
 	components: {
 		InputChip: __WEBPACK_IMPORTED_MODULE_0__components_InputChipComponent_vue___default.a
 	},
-
 	data: {
 		initialChips: ["hallo", "out", "there"]
 	},
-
 	methods: {
-		test_chip_added: function test_chip_added(args) {
-			console.info('test_chip_added', args);
+		test_chip_callback: function test_chip_callback(args) {
+			console.info('test_chip_callback', args);
 		}
 	},
 	computed: {},
-
 	created: function created() {
 		console.info("created");
 	},
@@ -47343,13 +47340,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		updateChip: function updateChip(chipValue) {
 			event.preventDefault();
 
+			chipValue = chipValue.trim();
+
 			// validation
-			if (chipValue.trim().length < 1) {
+			if (chipValue.length < 1) {
 				return;
 			}
 
 			this.$emit("chip_add", chipValue);
-			this.chips.push(chipValue);
+			this.chips.push(chipValue.trim());
 			this.$emit("chip_added", chipValue);
 			this.$emit("chips_changed", this.chips);
 		},

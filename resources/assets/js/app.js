@@ -15,11 +15,11 @@ window.Vue = require('vue');
 // ------------------------------------------------------------------
 
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
-const app = new Vue({
-    el: '#example-component'
-});
+// Vue.component('example-component', require('./components/ExampleComponent.vue'));
+//
+// const app = new Vue({
+//     el: '#example-component'
+// });
 
 
 
@@ -55,7 +55,7 @@ new Vue({
 
 
 // color
-new Vue({
+let vm1 = new Vue({
 	el: "#input-chip-component-color",
 	// template: '#chip-test-template',
 	components: {
