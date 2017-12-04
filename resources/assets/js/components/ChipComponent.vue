@@ -1,6 +1,7 @@
 <template>
 	<button type="button" class="btn btn-sm chip" :class="'btn-'+type">
-		{{ value }} <span class="badge badge-light" @click="deleteChip">x</span>
+		<span class="chip-value">{{ value }} </span>
+		<span class="badge badge-light chip-delete" @click="deleteChip">x</span>
 	</button>
 </template>
 
