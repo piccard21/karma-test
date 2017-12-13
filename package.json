@@ -26,5 +26,9 @@
         "popper.js": "^1.12.9",
         "vue": "^2.5.7",
         "yargs": "^10.0.3"
+    },
+    "dependencies": {
+        "ip-regex": "^2.1.0",
+        "parse-domain": "^2.0.0"
     }
 }

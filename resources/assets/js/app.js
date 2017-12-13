@@ -8,6 +8,10 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+// https://www.npmjs.com/package/parse-domain
+window.parseDomain = require('parse-domain');
+// https://www.npmjs.com/package/ip-regex
+window.ipRegex = require('ip-regex');
 
 
 // ------------------------------------------------------------------
@@ -28,7 +32,7 @@ window.Vue = require('vue');
 // ---------------------CHIPS -------------------------------
 // ------------------------------------------------------------------
 
-import InputChip from './components/InputChipComponent.vue';
+import NsInputChip from './components/NsInputChip.vue';
 
 
 
@@ -36,7 +40,7 @@ import InputChip from './components/InputChipComponent.vue';
 new Vue({
 	el: "#input-chip-component-empty",
 	components: {
-		InputChip
+		NsInputChip
 	},
 	methods: {},
 	computed: {},
@@ -59,7 +63,7 @@ let vm1 = new Vue({
 	el: "#input-chip-component-color",
 	// template: '#chip-test-template',
 	components: {
-		InputChip
+		NsInputChip
 	},
 	data: {
 		initialChips: ["hallo", "out", "there"]

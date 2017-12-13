@@ -1,5 +1,5 @@
 <template>
-	<button type="button" class="btn btn-sm chip" :class="'btn-'+type">
+	<button type="button" class="btn btn-sm chip-single" :class="'btn-'+type">
 		<span class="chip-value">{{ value }} </span>
 		<span class="badge badge-light chip-delete" @click="deleteChip">x</span>
 	</button>

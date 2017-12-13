@@ -1,7 +1,7 @@
 <template>
 	<div class="chip-wrapper form-control">
-		<chip-component v-for="(chip, i) in chips" :type="chipType" :key="chip" :value="chip" @delete="deleteChip(i, $event)"></chip-component>
-		<input class="chip-input" type="text" :value="chipValue" @keyup.enter="updateChip($event.target.value, $event)" @keyup.space="updateChip($event.target.value, $event)" ref="inputchip" placeholder="Enter ...">
+		<chip-component v-for="(chip, i) in chips" :type="chipType" :key="chip" :value="chip" @delete="removeChip(i)"></chip-component>
+		<input class="chip-input" type="text" :value="chipValue" @keyup.enter.prevent="addChip($event.target.value)" @keyup.space.prevent="addChip($event.target.value)" ref="inputchip" placeholder="Enter ...">
 	</div>
 </template>
 
@@ -42,22 +42,19 @@
 		},
 
 		methods: {
-			updateChip(chipValue, $event) {
-				event.preventDefault();
-
+			addChip(chipValue) {
 				chipValue = chipValue.trim();
 
 				// validation
 				if (chipValue.length < 1) {
 					return;
 				}
-
 				this.$emit("chip_add", chipValue);
 				this.chips.push(chipValue.trim());
 				this.$emit("chip_added", chipValue);
 				this.$emit("chips_changed", this.chips);
 			},
-			deleteChip(chipIndex, $event) {
+			removeChip(chipIndex) {
 
 				let chipInfo = {
 					index: chipIndex,
