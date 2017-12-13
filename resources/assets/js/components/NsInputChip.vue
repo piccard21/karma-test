@@ -26,7 +26,7 @@
 			},
 			chipType: {
 				type: String,
-				default: "info",
+				default: "warning",
 				validator: function (type) {
 					let types = ["danger", "warning", "info", "success"];
 					return types.includes(type);
@@ -105,7 +105,7 @@
 										this.$emit("chip_error", {
 											msg: "wrong domain"
 										});
-										chips = [];
+										chips.splice(i);
 										breakLoop = true;
 									}
 									break;
@@ -129,7 +129,6 @@
 										breakLoop = true;
 									}
 									break;
-
 							}
 
 
@@ -138,6 +137,8 @@
 								break;
 							}
 						}
+
+						console.info("chips", chips)
 					},
 				immediate: true
 			}

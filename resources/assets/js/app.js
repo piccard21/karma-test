@@ -15,24 +15,10 @@ window.ipRegex = require('ip-regex');
 
 
 // ------------------------------------------------------------------
-// ---------------------EXAMPLE -------------------------------
+// ---------------------NS-INPUT-CHIPS -------------------------------
 // ------------------------------------------------------------------
 
-
-// Vue.component('example-component', require('./components/ExampleComponent.vue'));
-//
-// const app = new Vue({
-//     el: '#example-component'
-// });
-
-
-
-
-// ------------------------------------------------------------------
-// ---------------------CHIPS -------------------------------
-// ------------------------------------------------------------------
-
-import NsInputChip from './components/NsInputChip.vue';
+import InputChip from './components/InputChipComponent.vue';
 
 
 
@@ -40,7 +26,7 @@ import NsInputChip from './components/NsInputChip.vue';
 new Vue({
 	el: "#input-chip-component-empty",
 	components: {
-		NsInputChip
+		InputChip
 	},
 	methods: {},
 	computed: {},
@@ -59,11 +45,11 @@ new Vue({
 
 
 // color
-let vm1 = new Vue({
+new Vue({
 	el: "#input-chip-component-color",
 	// template: '#chip-test-template',
 	components: {
-		NsInputChip
+		InputChip
 	},
 	data: {
 		initialChips: ["hallo", "out", "there"]
@@ -85,25 +71,57 @@ let vm1 = new Vue({
 
 
 
+// ------------------------------------------------------------------
+// ---------------------NS-INPUT-CHIPS -------------------------------
+// ------------------------------------------------------------------
 
-// initial values
-// new Vue({
-// 	el: "#input-chip-component-initial-values",
-// 	components: {
-// 		InputChip
-// 	},
-//
-// 	data: {
-// 		initialChips: ["hallo", "out", "there"]
-// 	},
-//
-// 	methods: {},
-// 	computed: {},
-//
-// 	created() {
-// 		console.info("created")
-// 	},
-// 	mounted() {
-// 		console.info("mounted")
-// 	}
-// })
+import NsInputChip from './components/NsInputChip.vue';
+
+
+
+// empty
+new Vue({
+	el: "#ns-input-chip-component-empty",
+	components: {
+		NsInputChip
+	},
+	methods: {},
+	computed: {},
+
+	created() {
+		console.info("created")
+	},
+	mounted() {
+		console.info("mounted")
+	}
+})
+
+
+
+
+
+
+// color
+new Vue({
+	el: "#ns-input-chip-component-color",
+	// template: '#chip-test-template',
+	components: {
+		NsInputChip
+	},
+	data: {
+		initialChips: ["hallo", "out", "there"]
+	},
+	methods: {
+		test_chip_callback(args) {
+			console.info('test_chip_callback', args);
+		}
+	},
+	computed: {},
+	created() {
+		console.info("created")
+	},
+	mounted() {
+		console.info("mounted")
+	}
+})
+
