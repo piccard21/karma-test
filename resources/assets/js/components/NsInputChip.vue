@@ -158,7 +158,7 @@
 		flex-wrap: wrap;
 	}
 
-	.chip {
+	.chip-single {
 		margin: 3px;
 	}
 
