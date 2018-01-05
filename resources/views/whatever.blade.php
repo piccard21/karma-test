@@ -60,6 +60,12 @@
 		<h3>Components within Components</h3>
 		<task-list></task-list>
 
+		<hr>
+
+		<h3>Pass down data</h3>
+		<pass-down></pass-down>
+
+
 	</div>
 </div>
 
