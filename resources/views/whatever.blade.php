@@ -53,6 +53,7 @@
 		{{-- see: https://alligator.io/vuejs/scoped-component-slots/--}}
 		<h3>Scoped Slot</h3>
 		<scoped-slot></scoped-slot>
+		TODO: check list-example in doc
 
 		<hr>
 
@@ -64,6 +65,13 @@
 
 		<h3>Pass down data</h3>
 		<pass-down></pass-down>
+		
+		<hr>
+
+		<h3>Validate passed down data</h3>
+		<prop-validation></prop-validation>
+
+		<hr>
 
 
 	</div>

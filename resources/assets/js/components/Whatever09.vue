@@ -2,7 +2,7 @@
 	<div>
 		<div>String: {{ message }}</div>
 		<div>bound: {{ passmedown }}</div>
-		<div>passmultiple: {{ passmultiple.aaa }}</div>
+		<div>passmultiple: {{ passmultiple.aaa }} / {{ passmultiple.bbb }}</div>
 	</div>
 </template>
 
@@ -12,7 +12,7 @@
 		props: [
 			'message',
 			'passmedown',
-			'passmultiple'
+			'passmultiple',
 		],
 		data() {
 			return {}

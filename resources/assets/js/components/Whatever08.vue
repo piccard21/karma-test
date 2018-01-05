@@ -1,5 +1,5 @@
 <template>
-	<child message="hello!" :passmedown="whatever" :passmultiple="multipleBind"></child>
+	<child message="hello!" :passmedown="whatever" :passmultiple="multipleBind" :valme="validateMe"></child>
 </template>
 
 <script>
@@ -16,7 +16,8 @@
 					aaa: 'aaa1',
 					bbb: 'bbb2',
 					ccc: 'ccc3',
-				}
+				},
+				validateMe: 'Should be a string',
 			}
 		}
 	}

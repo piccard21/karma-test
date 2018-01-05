@@ -20,6 +20,7 @@ import AppLayout from './components/Whatever03.vue';
 import ScopedSlot from './components/Whatever04.vue';
 import TaskList from './components/Whatever06.vue';
 import PassDown from './components/Whatever08.vue';
+import PropValidation from './components/Whatever10.vue';
 
 
 
@@ -32,7 +33,8 @@ new Vue({
 		AppLayout,
 		ScopedSlot,
 		TaskList,
-		PassDown
+		PassDown,
+		PropValidation
 	},
 	methods: {},
 	computed: {},
