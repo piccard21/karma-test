@@ -73,6 +73,11 @@
 
 		<hr>
 
+		<h3>BS-Component</h3>
+		<bs-alert type-class="danger"></bs-alert>
+
+		<hr>
+
 
 	</div>
 </div>

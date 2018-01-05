@@ -21,6 +21,7 @@ import ScopedSlot from './components/Whatever04.vue';
 import TaskList from './components/Whatever06.vue';
 import PassDown from './components/Whatever08.vue';
 import PropValidation from './components/Whatever10.vue';
+import BsAlert from './components/Whatever12.vue';
 
 
 
@@ -34,7 +35,8 @@ new Vue({
 		ScopedSlot,
 		TaskList,
 		PassDown,
-		PropValidation
+		PropValidation,
+		BsAlert
 	},
 	methods: {},
 	computed: {},
