@@ -47856,10 +47856,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				id: 3,
 				description: 'Goto the grocery',
 				completed: false
-			}, {
-				id: 4,
-				description: 'Goto the school',
-				completed: true
 			}]
 		};
 	}
@@ -47875,6 +47871,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "ul",
+    { staticClass: "list-group" },
     _vm._l(_vm.tasks, function(task) {
       return _c("task", { key: task.id }, [_vm._v(_vm._s(task.description))])
     })
@@ -47965,7 +47962,12 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("li", [_vm._t("default")], 2)
+  return _c(
+    "li",
+    { staticClass: "list-group-item list-group-item-warning" },
+    [_vm._t("default")],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

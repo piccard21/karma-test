@@ -1,5 +1,5 @@
 <template>
-	<li>
+	<li class="list-group-item list-group-item-warning">
 		<slot></slot>
 	</li>
 </template>

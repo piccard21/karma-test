@@ -1,5 +1,5 @@
 <template>
-	<ul>
+	<ul class="list-group">
 		<task v-for="task in tasks" :key="task.id">{{ task.description }}</task>
 	</ul>
 </template>
@@ -29,11 +29,6 @@
 						id: 3,
 						description: 'Goto the grocery',
 						completed: false
-					},
-					{
-						id: 4,
-						description: 'Goto the school',
-						completed: true
 					}
 				]
 			}
