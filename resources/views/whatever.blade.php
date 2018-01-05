@@ -79,9 +79,13 @@
 		<tabs-ex></tabs-ex>
 		<hr>
 
+		{{--Events--}}
 		<h3>Events</h3>
 		<button-counter></button-counter>
 		<hr>
+		<h3>Shared Instance</h3>
+		<share-another-instance></share-another-instance>
+		<share-an-instance></share-an-instance>
 
 
 

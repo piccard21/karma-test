@@ -1,4 +1,3 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -14,6 +13,22 @@ window.parseDomain = require('parse-domain');
 window.ipRegex = require('ip-regex');
 
 
+window.Event = new class {
+	constructor() {
+		this.vue = new Vue();
+	}
+
+	fire(event, data = null) {
+		console.info("fire");
+		this.vue.$emit(event, data);
+	}
+
+	listen(event, callback) {
+		this.vue.$on(event, callback);
+	}
+}
+
+
 import Whatever from './components/Whatever01.vue';
 import Sloty from './components/Whatever02.vue';
 import AppLayout from './components/Whatever03.vue';
@@ -24,7 +39,8 @@ import PropValidation from './components/Whatever10.vue';
 import BsAlert from './components/Whatever12.vue';
 import TabsEx from './components/Whatever13.vue';
 import ButtonCounter from './components/Whatever14.vue';
-
+import ShareAnInstance from './components/Whatever16.vue';
+import ShareAnotherInstance from './components/Whatever17.vue';
 
 
 // empty
@@ -40,12 +56,16 @@ new Vue({
 		PropValidation,
 		BsAlert,
 		TabsEx,
-		ButtonCounter
+		ButtonCounter,
+		ShareAnInstance,
+		ShareAnotherInstance
 	},
 	methods: {},
 	computed: {},
-	created() {	},
-	mounted() {}
+	created() {
+	},
+	mounted() {
+	}
 })
 
 
