@@ -47,11 +47,19 @@
 
 			<p slot="footer">Here's some contact <strong>info</strong></p>
 		</app-layout>
+
 		<hr>
 
 		{{-- see: https://alligator.io/vuejs/scoped-component-slots/--}}
 		<h3>Scoped Slot</h3>
 		<scoped-slot></scoped-slot>
+
+		<hr>
+
+		{{--components within components--}}
+		<h3>Components within Components</h3>
+		<task-list></task-list>
+
 	</div>
 </div>
 

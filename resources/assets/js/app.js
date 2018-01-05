@@ -18,6 +18,7 @@ import Whatever from './components/Whatever01.vue';
 import Sloty from './components/Whatever02.vue';
 import AppLayout from './components/Whatever03.vue';
 import ScopedSlot from './components/Whatever04.vue';
+import TaskList from './components/Whatever06.vue';
 
 
 // empty
@@ -27,7 +28,8 @@ new Vue({
 		Whatever,
 		Sloty,
 		AppLayout,
-		ScopedSlot
+		ScopedSlot,
+		TaskList
 	},
 	methods: {},
 	computed: {},
