@@ -22,6 +22,8 @@ import TaskList from './components/Whatever06.vue';
 import PassDown from './components/Whatever08.vue';
 import PropValidation from './components/Whatever10.vue';
 import BsAlert from './components/Whatever12.vue';
+import TabsEx from './components/Whatever13.vue';
+import ButtonCounter from './components/Whatever14.vue';
 
 
 
@@ -36,7 +38,9 @@ new Vue({
 		TaskList,
 		PassDown,
 		PropValidation,
-		BsAlert
+		BsAlert,
+		TabsEx,
+		ButtonCounter
 	},
 	methods: {},
 	computed: {},

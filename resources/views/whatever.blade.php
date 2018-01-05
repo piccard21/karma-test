@@ -75,9 +75,22 @@
 
 		<h3>BS-Component</h3>
 		<bs-alert type-class="danger"></bs-alert>
+		<hr>
+		<tabs-ex></tabs-ex>
+		<hr>
+
+		<h3>Events</h3>
+		<button-counter></button-counter>
+		<hr>
+
+
+
 
 		<hr>
 
+		model - bind
+		inputChip
+		examples doc: https://vuejs.org/v2/guide/components.html#One-Way-Data-Flow
 
 	</div>
 </div>
