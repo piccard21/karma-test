@@ -14,114 +14,133 @@ window.parseDomain = require('parse-domain');
 window.ipRegex = require('ip-regex');
 
 
-// ------------------------------------------------------------------
-// ---------------------NS-INPUT-CHIPS -------------------------------
-// ------------------------------------------------------------------
-
-import InputChip from './components/InputChipComponent.vue';
-
+import Whatever from './components/Whatever.vue';
 
 
 // empty
 new Vue({
-	el: "#input-chip-component-empty",
+	el: "#app",
 	components: {
-		InputChip
+		Whatever
 	},
 	methods: {},
 	computed: {},
 
-	created() {
-		console.info("created")
-	},
-	mounted() {
-		console.info("mounted")
-	}
+	created() {	},
+	mounted() {}
 })
 
 
-
-
-
-
-// color
-new Vue({
-	el: "#input-chip-component-color",
-	// template: '#chip-test-template',
-	components: {
-		InputChip
-	},
-	data: {
-		initialChips: ["hallo", "out", "there"]
-	},
-	methods: {
-		test_chip_callback(args) {
-			console.info('test_chip_callback', args);
-		}
-	},
-	computed: {},
-	created() {
-		console.info("created")
-	},
-	mounted() {
-		console.info("mounted")
-	}
-})
-
-
-
-
-// ------------------------------------------------------------------
-// ---------------------NS-INPUT-CHIPS -------------------------------
-// ------------------------------------------------------------------
-
-import NsInputChip from './components/NsInputChip.vue';
-
-
-
-// empty
-new Vue({
-	el: "#ns-input-chip-component-empty",
-	components: {
-		NsInputChip
-	},
-	methods: {},
-	computed: {},
-
-	created() {
-		console.info("created")
-	},
-	mounted() {
-		console.info("mounted")
-	}
-})
-
-
-
-
-
-
-// color
-new Vue({
-	el: "#ns-input-chip-component-color",
-	// template: '#chip-test-template',
-	components: {
-		NsInputChip
-	},
-	data: {
-		initialChips: ["hallo", "out", "there"]
-	},
-	methods: {
-		test_chip_callback(args) {
-			console.info('test_chip_callback', args);
-		}
-	},
-	computed: {},
-	created() {
-		console.info("created")
-	},
-	mounted() {
-		console.info("mounted")
-	}
-})
-
+//
+//
+// // ------------------------------------------------------------------
+// // ---------------------INPUT-CHIPS -------------------------------
+// // ------------------------------------------------------------------
+//
+// import InputChip from './components/InputChipComponent.vue';
+//
+//
+//
+// // empty
+// new Vue({
+// 	el: "#input-chip-component-empty",
+// 	components: {
+// 		InputChip
+// 	},
+// 	methods: {},
+// 	computed: {},
+//
+// 	created() {
+// 		console.info("created")
+// 	},
+// 	mounted() {
+// 		console.info("mounted")
+// 	}
+// })
+//
+//
+//
+//
+//
+//
+// // color
+// new Vue({
+// 	el: "#input-chip-component-color",
+// 	// template: '#chip-test-template',
+// 	components: {
+// 		InputChip
+// 	},
+// 	data: {
+// 		initialChips: ["hallo", "out", "there"]
+// 	},
+// 	methods: {
+// 		test_chip_callback(args) {
+// 			console.info('test_chip_callback', args);
+// 		}
+// 	},
+// 	computed: {},
+// 	created() {
+// 		console.info("created")
+// 	},
+// 	mounted() {
+// 		console.info("mounted")
+// 	}
+// })
+//
+//
+//
+//
+// // ------------------------------------------------------------------
+// // ---------------------NS-INPUT-CHIPS -------------------------------
+// // ------------------------------------------------------------------
+//
+// import NsInputChip from './components/NsInputChip.vue';
+//
+//
+//
+// // empty
+// new Vue({
+// 	el: "#ns-input-chip-component-empty",
+// 	components: {
+// 		NsInputChip
+// 	},
+// 	methods: {},
+// 	computed: {},
+//
+// 	created() {
+// 		console.info("created")
+// 	},
+// 	mounted() {
+// 		console.info("mounted")
+// 	}
+// })
+//
+//
+//
+//
+//
+//
+// // color
+// new Vue({
+// 	el: "#ns-input-chip-component-color",
+// 	// template: '#chip-test-template',
+// 	components: {
+// 		NsInputChip
+// 	},
+// 	data: {
+// 		initialChips: ["hallo", "out", "there"]
+// 	},
+// 	methods: {
+// 		test_chip_callback(args) {
+// 			console.info('test_chip_callback', args);
+// 		}
+// 	},
+// 	computed: {},
+// 	created() {
+// 		console.info("created")
+// 	},
+// 	mounted() {
+// 		console.info("mounted")
+// 	}
+// })
+//
