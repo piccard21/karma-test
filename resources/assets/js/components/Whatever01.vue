@@ -33,15 +33,11 @@
 
 			<!--computed properties in v:for-->
 			<h5>computed properties in v:for</h5>
-			<h7>incomplete task</h7>
+			<h6>incomplete task</h6>
 			<ul class="list-group">
 				<li v-for="(task ,index) in incompleteTasks" class="list-group-item list-group-item-info">{{++index}}: {{task.description}}
 				</li>
 			</ul>
-
-			<!--<button class="btn" @click.prevent="listTasks(1)">complete tasks</button>-->
-			<!--<button class="btn" @click.prevent="listTasks(0)">incomplete tasks</button>-->
-
 	</form>
 
 	</div>

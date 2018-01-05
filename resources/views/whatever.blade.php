@@ -18,16 +18,37 @@
 <body>
 
 
-
-
 {{--WHATEVER--}}
 <div class="container" style="margin-top: 1rem;">
 	<div id="app">
+		{{--basics--}}
+		<h3>Basics</h3>
 		<whatever></whatever>
+
+		<hr>
+		
+		{{--slots--}}
+		<h3>Single Slot</h3>
+		<ul class="list-group">
+			<sloty>Goto the store</sloty>
+			<sloty>Goto the school</sloty>
+			<sloty></sloty>
+			<sloty>Goto the cinema</sloty>
+		</ul>
+
+		<hr>
+
+		<h3>Named Slot</h3>
+		<app-layout>
+			<h5 slot="header">Here might be a page title</h5>
+
+			<p>A paragraph for the main content.</p>
+			<p>And another one.</p>
+
+			<p slot="footer">Here's some contact info</p>
+		</app-layout>
 	</div>
 </div>
-
-
 
 
 <script src="{{ asset('js/app.js') }}"></script>

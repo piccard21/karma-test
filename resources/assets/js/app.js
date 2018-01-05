@@ -14,18 +14,21 @@ window.parseDomain = require('parse-domain');
 window.ipRegex = require('ip-regex');
 
 
-import Whatever from './components/Whatever.vue';
+import Whatever from './components/Whatever01.vue';
+import Sloty from './components/Whatever02.vue';
+import AppLayout from './components/Whatever03.vue';
 
 
 // empty
 new Vue({
 	el: "#app",
 	components: {
-		Whatever
+		Whatever,
+		Sloty,
+		AppLayout
 	},
 	methods: {},
 	computed: {},
-
 	created() {	},
 	mounted() {}
 })
