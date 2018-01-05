@@ -17,6 +17,7 @@ window.ipRegex = require('ip-regex');
 import Whatever from './components/Whatever01.vue';
 import Sloty from './components/Whatever02.vue';
 import AppLayout from './components/Whatever03.vue';
+import ScopedSlot from './components/Whatever04.vue';
 
 
 // empty
@@ -25,7 +26,8 @@ new Vue({
 	components: {
 		Whatever,
 		Sloty,
-		AppLayout
+		AppLayout,
+		ScopedSlot
 	},
 	methods: {},
 	computed: {},

@@ -26,7 +26,7 @@
 		<whatever></whatever>
 
 		<hr>
-		
+
 		{{--slots--}}
 		<h3>Single Slot</h3>
 		<ul class="list-group">
@@ -45,8 +45,13 @@
 			<p>A paragraph for the main content.</p>
 			<p>And another one.</p>
 
-			<p slot="footer">Here's some contact info</p>
+			<p slot="footer">Here's some contact <strong>info</strong></p>
 		</app-layout>
+		<hr>
+
+		{{-- see: https://alligator.io/vuejs/scoped-component-slots/--}}
+		<h3>Scoped Slot</h3>
+		<scoped-slot></scoped-slot>
 	</div>
 </div>
 
