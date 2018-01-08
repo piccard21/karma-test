@@ -1,7 +1,10 @@
 <template>
-	<button type="button" class="btn btn-sm chip-single" :class="'btn-'+type">
-		<span class="chip-value">{{ value }} </span>
-		<span class="badge badge-light chip-delete" @click="deleteChip">x</span>
+	<button
+			type="button"
+			class="btn btn-sm chip-single"
+			:class="'btn-'+chipType">
+		<span class="">{{chipValue}}</span>
+		<span class="badge badge-light" @click="deleteChip">x</span>
 	</button>
 </template>
 
@@ -9,26 +12,27 @@
 
 	export default {
 		props: {
-			value: {
+			chipType: {
 				type: String,
-				default: ""
+				default: "warning",
+				validator: function (type) {
+					let types = ["danger", "warning", "info", "success"];
+					return types.includes(type);
+				}
 			},
-			type: {
+			chipValue: {
 				type: String,
-				default: "info"
-			}
-		},
-		methods: {
-			deleteChip() {
-				this.$emit("delete");
+				required: true
 			}
 
 		},
+		methods: {
+			deleteChip() {
+				this.$emit("chip-delete");
+			}
+		},
 		data() {
 			return {};
-		},
-		computed: {},
-		mounted() {
 		}
 	}
 
@@ -36,5 +40,7 @@
 
 
 <style>
-
+	.chip-single {
+		margin: 0 2px;
+	}
 </style>

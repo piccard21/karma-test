@@ -41,6 +41,7 @@ import ButtonCounter from './components/Whatever14.vue';
 import ShareAnInstance from './components/Whatever16.vue';
 import ShareAnotherInstance from './components/Whatever17.vue';
 import Ajax from './components/Whatever18.vue';
+import InputChip from './components/InputChipComponent.vue';
 
 
 // empty
@@ -59,9 +60,26 @@ new Vue({
 		ButtonCounter,
 		ShareAnInstance,
 		ShareAnotherInstance,
-		Ajax
+		Ajax,
+		InputChip
 	},
-	methods: {},
+	methods: {
+		chipAddCb(chipValue) {
+			console.info('chip is gonna be added ... ', chipValue);
+		},
+		chipAddedCb(chipValue) {
+			console.info('chip was added ... ', chipValue);
+		},
+		chipDeleteCb(chipValue) {
+			console.info('chip is gonna be deleted ... ', chipValue);
+		},
+		chipDeletedCb(chipValue) {
+			console.info('chip was deleted ... ', chipValue);
+		},
+		chipsChangedCb(chips) {
+			console.info('chips changed ... ', chips);
+		}
+	},
 	computed: {},
 	created() {
 	},

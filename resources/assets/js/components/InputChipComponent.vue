@@ -1,93 +1,80 @@
 <template>
 	<div class="chip-wrapper form-control">
-		<chip-component v-for="(chip, i) in chips" :type="chipType" :key="chip" :value="chip" @delete="deleteChip(i)"></chip-component>
-		<input class="chip-input" type="text" :value="chipValue" @keyup.enter.prevent="addChip($event.target.value)" @keyup.space.prevent="addChip($event.target.value)" ref="inputchip" placeholder="Enter ...">
+		<chip class="" v-for="(chip, i) in chips"
+		      :key="i"
+		      :chip-type="chipType"
+		      :chip-value="chip"
+		      @chip-delete="removeChip(i)">{{ chip }}
+		</chip>
+		<input class="chip-input"
+		       type="text"
+		       @keyup.enter="addChip($event.target.value)"
+		       @keyup.space="addChip($event.target.value)"
+		       placeholder="Enter ..."
+		       ref="inputchip">
 	</div>
 </template>
+
 
 <script>
 
 	import Chip from './ChipComponent.vue';
 
+
 	export default {
 		components: {
-			'chip-component': Chip
+			Chip
 		},
 		props: {
-			chips: {
-				type: Array,
-				default: function() {
-					return []
-				}
-			},
 			chipType: {
 				type: String,
-				default:"warning",
-				validator: function (type) {
-					let types = ["danger", "warning", "info", "success"];
-					return types.includes(type);
-				}
+				default: 'info'
 			}
 		},
-
-		model: {
-			prop: "chips",
-			event: "change"
-		},
-
 		data() {
 			return {
-				chipValue: "",
+				chips: []
 			}
 		},
-
 		methods: {
 			addChip(chipValue) {
 				chipValue = chipValue.trim();
 
-				// validation
 				if (chipValue.length < 1) {
+					this.$refs.inputchip.value = "";
 					return;
 				}
-				this.$emit("chip_add", chipValue);
-				this.chips.push(chipValue.trim());
-				this.$emit("chip_added", chipValue);
-				this.$emit("chips_changed", this.chips);
+
+				this.$emit("chip-add", chipValue);
+				this.chips.push(chipValue);
+				this.$emit("chip-added", chipValue);
+				this.$emit("chips-changed", this.chips);
+
+				this.$refs.inputchip.value = "";
+
 			},
-			deleteChip(chipIndex) {
+			removeChip(chipIndex) {
 
 				let chipInfo = {
 					index: chipIndex,
 					value: this.chips[chipIndex]
 				};
 
-				this.$emit("chip_delete",chipInfo);
+				this.$emit("chip-delete",chipInfo);
 				this.chips.splice(chipIndex, 1);
-				this.$emit("chip_deleted",chipInfo);
-				this.$emit("chips_changed", this.chips);
+				this.$emit("chip-deleted",chipInfo);
+				this.$emit("chips-changed", this.chips);
 			}
-		},
-		computed: {},
-		mounted() {
 		}
 	}
 </script>
 
-
 <style>
-	.chip-hint {
-		color: #868e96 !important;
-	}
-
 	.chip-wrapper {
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-start;
 		flex-wrap: wrap;
-	}
-
-	.chip-single {
-		margin: 3px;
 	}
 
 	.chip-input {

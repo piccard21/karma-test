@@ -21,6 +21,10 @@ Route::get('/whatever', function () {
 });
 
 
+Route::get('/inputchip', function () {
+	return view('inputchip');
+});
+
 
 
 Route::get('skills', function() {
