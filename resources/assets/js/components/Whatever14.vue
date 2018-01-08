@@ -1,8 +1,8 @@
 <template>
-	<div>
+	<div class="list-group">
 		<p>{{ total }}</p>
 		<btn-counter v-on:increment="incrementTotal"></btn-counter>
-		<btn-counter v-on:increment="incrementTotal"></btn-counter>
+		<btn-counter @increment="incrementTotal"></btn-counter>
 	</div>
 </template>
 

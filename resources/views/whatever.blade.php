@@ -84,17 +84,25 @@
 		<button-counter></button-counter>
 		<hr>
 		<h3>Shared Instance</h3>
-		<share-another-instance></share-another-instance>
 		<share-an-instance></share-an-instance>
-
-
-
+		<share-another-instance></share-another-instance>
 
 		<hr>
 
-		model - bind
-		inputChip
-		examples doc: https://vuejs.org/v2/guide/components.html#One-Way-Data-Flow
+		{{--Ajax--}}
+		<h3>Ajax</h3>
+		<ajax></ajax>
+
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<hr>
+		<p>
+			model - bind wie in
+			inputChip
+			examples doc: https://vuejs.org/v2/guide/components.html#One-Way-Data-Flow
+		</p>
 
 	</div>
 </div>

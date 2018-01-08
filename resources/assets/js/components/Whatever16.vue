@@ -4,7 +4,7 @@
 			<input placeholder="Enter code" @blur="onCouponApplied">
 		</div>
 
-		<h1 v-if="couponApplied">You use a coupon!</h1>
+		<p v-if="couponApplied">You use a coupon!</p>
 	</div>
 </template>
 

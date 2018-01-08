@@ -19,7 +19,6 @@ window.Event = new class {
 	}
 
 	fire(event, data = null) {
-		console.info("fire");
 		this.vue.$emit(event, data);
 	}
 
@@ -41,6 +40,7 @@ import TabsEx from './components/Whatever13.vue';
 import ButtonCounter from './components/Whatever14.vue';
 import ShareAnInstance from './components/Whatever16.vue';
 import ShareAnotherInstance from './components/Whatever17.vue';
+import Ajax from './components/Whatever18.vue';
 
 
 // empty
@@ -58,13 +58,15 @@ new Vue({
 		TabsEx,
 		ButtonCounter,
 		ShareAnInstance,
-		ShareAnotherInstance
+		ShareAnotherInstance,
+		Ajax
 	},
 	methods: {},
 	computed: {},
 	created() {
 	},
 	mounted() {
+
 	}
 })
 

@@ -19,3 +19,10 @@ Route::get('/', function () {
 Route::get('/whatever', function () {
 	return view('whatever');
 });
+
+
+
+
+Route::get('skills', function() {
+	return ['Laravel', 'Vue', 'PHP', 'JS', 'Tooling'];
+});
