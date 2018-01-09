@@ -50195,7 +50195,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			};
 
 			this.$emit("chip-delete", chipInfo);
-			this.chips.splice(chipIndex, 1);
+			this.chips.splice(chipIndex);
 			this.$emit("chip-deleted", chipInfo);
 			this.$emit("chips-changed", this.chips);
 		},
