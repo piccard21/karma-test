@@ -42,6 +42,7 @@ import ShareAnInstance from './components/Whatever16.vue';
 import ShareAnotherInstance from './components/Whatever17.vue';
 import Ajax from './components/Whatever18.vue';
 import InputChip from './components/InputChipComponent.vue';
+import NsInputChip from './components/NsInputChipComponent.vue';
 
 
 // empty
@@ -61,7 +62,9 @@ new Vue({
 		ShareAnInstance,
 		ShareAnotherInstance,
 		Ajax,
-		InputChip
+		InputChip,
+		NsInputChip
+
 	},
 	methods: {
 		chipAddCb(chipValue) {
@@ -78,7 +81,11 @@ new Vue({
 		},
 		chipsChangedCb(chips) {
 			console.info('chips changed ... ', chips);
+		},
+		chipErrorCb(error) {
+			console.error('cannot add chip: ', error);
 		}
+
 	},
 	computed: {},
 	created() {
@@ -87,118 +94,3 @@ new Vue({
 
 	}
 })
-
-
-//
-//
-// // ------------------------------------------------------------------
-// // ---------------------INPUT-CHIPS -------------------------------
-// // ------------------------------------------------------------------
-//
-// import InputChip from './components/InputChipComponent.vue';
-//
-//
-//
-// // empty
-// new Vue({
-// 	el: "#input-chip-component-empty",
-// 	components: {
-// 		InputChip
-// 	},
-// 	methods: {},
-// 	computed: {},
-//
-// 	created() {
-// 		console.info("created")
-// 	},
-// 	mounted() {
-// 		console.info("mounted")
-// 	}
-// })
-//
-//
-//
-//
-//
-//
-// // color
-// new Vue({
-// 	el: "#input-chip-component-color",
-// 	// template: '#chip-test-template',
-// 	components: {
-// 		InputChip
-// 	},
-// 	data: {
-// 		initialChips: ["hallo", "out", "there"]
-// 	},
-// 	methods: {
-// 		test_chip_callback(args) {
-// 			console.info('test_chip_callback', args);
-// 		}
-// 	},
-// 	computed: {},
-// 	created() {
-// 		console.info("created")
-// 	},
-// 	mounted() {
-// 		console.info("mounted")
-// 	}
-// })
-//
-//
-//
-//
-// // ------------------------------------------------------------------
-// // ---------------------NS-INPUT-CHIPS -------------------------------
-// // ------------------------------------------------------------------
-//
-// import NsInputChip from './components/NsInputChip.vue';
-//
-//
-//
-// // empty
-// new Vue({
-// 	el: "#ns-input-chip-component-empty",
-// 	components: {
-// 		NsInputChip
-// 	},
-// 	methods: {},
-// 	computed: {},
-//
-// 	created() {
-// 		console.info("created")
-// 	},
-// 	mounted() {
-// 		console.info("mounted")
-// 	}
-// })
-//
-//
-//
-//
-//
-//
-// // color
-// new Vue({
-// 	el: "#ns-input-chip-component-color",
-// 	// template: '#chip-test-template',
-// 	components: {
-// 		NsInputChip
-// 	},
-// 	data: {
-// 		initialChips: ["hallo", "out", "there"]
-// 	},
-// 	methods: {
-// 		test_chip_callback(args) {
-// 			console.info('test_chip_callback', args);
-// 		}
-// 	},
-// 	computed: {},
-// 	created() {
-// 		console.info("created")
-// 	},
-// 	mounted() {
-// 		console.info("mounted")
-// 	}
-// })
-//
