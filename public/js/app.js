@@ -1685,6 +1685,9 @@ new Vue({
 			console.error('cannot add chip: ', error);
 		}
 	},
+	data: {
+		chipsInitial: ["hallo.de", "123.123.123.123", "2001:cdba:0000:0000:0000:0000:3257:9652"]
+	},
 	computed: {},
 	created: function created() {},
 	mounted: function mounted() {}
@@ -49828,6 +49831,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.$emit("chip-deleted", chipInfo);
 			this.$emit("chips-changed", this.chips);
 		}
+	},
+	mounted: function mounted() {
+		var _iteratorNormalCompletion = true;
+		var _didIteratorError = false;
+		var _iteratorError = undefined;
+
+		try {
+			for (var _iterator = this.$root.$data.chipsInitial[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+				var chip = _step.value;
+
+				if (typeof chip === 'string') {
+					this.addChip(chip);
+				}
+			}
+		} catch (err) {
+			_didIteratorError = true;
+			_iteratorError = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion && _iterator.return) {
+					_iterator.return();
+				}
+			} finally {
+				if (_didIteratorError) {
+					throw _iteratorError;
+				}
+			}
+		}
 	}
 });
 
@@ -49893,7 +49924,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	props: {
 		chipType: {
 			type: String,
-			default: "warning",
+			default: "info",
 			validator: function validator(type) {
 				var types = ["danger", "warning", "info", "success"];
 				return types.includes(type);
@@ -50216,7 +50247,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					}
 					break;
 				case 2:
-					// ipv6
+					// ipv6: 2001:cdba:0000:0000:0000:0000:3257:9652
 					if (!__WEBPACK_IMPORTED_MODULE_2_ip_regex___default.a.v6({ exact: true }).test(chipValue)) {
 						errorMsg = "not an IPv6 address";
 					}
@@ -50232,6 +50263,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				return false;
 			}
 			return true;
+		}
+	},
+	mounted: function mounted() {
+		var _iteratorNormalCompletion = true;
+		var _didIteratorError = false;
+		var _iteratorError = undefined;
+
+		try {
+			for (var _iterator = this.$root.$data.chipsInitial[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+				var chip = _step.value;
+
+				if (typeof chip === 'string') {
+					this.addChip(chip);
+				}
+			}
+		} catch (err) {
+			_didIteratorError = true;
+			_iteratorError = err;
+		} finally {
+			try {
+				if (!_iteratorNormalCompletion && _iterator.return) {
+					_iterator.return();
+				}
+			} finally {
+				if (_didIteratorError) {
+					throw _iteratorError;
+				}
+			}
 		}
 	}
 });

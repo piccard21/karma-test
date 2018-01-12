@@ -91,7 +91,7 @@
 						}
 						break;
 					case 2:
-						// ipv6
+						// ipv6: 2001:cdba:0000:0000:0000:0000:3257:9652
 						if (!ipRegex.v6({exact: true}).test(chipValue)) {
 							errorMsg = "not an IPv6 address";
 						}
@@ -107,6 +107,13 @@
 					return false;
 				}
 				return true;
+			}
+		},
+		mounted() {
+			for (let chip of this.$root.$data.chipsInitial) {
+				if (typeof chip === 'string') {
+					this.addChip(chip);
+				}
 			}
 		}
 	}

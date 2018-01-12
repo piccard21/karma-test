@@ -14,7 +14,7 @@
 		props: {
 			chipType: {
 				type: String,
-				default: "warning",
+				default: "info",
 				validator: function (type) {
 					let types = ["danger", "warning", "info", "success"];
 					return types.includes(type);

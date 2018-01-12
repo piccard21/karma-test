@@ -60,10 +60,17 @@
 					value: this.chips[chipIndex]
 				};
 
-				this.$emit("chip-delete",chipInfo);
+				this.$emit("chip-delete", chipInfo);
 				this.chips.splice(chipIndex, 1);
-				this.$emit("chip-deleted",chipInfo);
+				this.$emit("chip-deleted", chipInfo);
 				this.$emit("chips-changed", this.chips);
+			}
+		},
+		mounted() {
+			for (let chip of this.$root.$data.chipsInitial) {
+				if (typeof chip === 'string') {
+					this.addChip(chip);
+				}
 			}
 		}
 	}

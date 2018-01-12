@@ -87,10 +87,10 @@ new Vue({
 		}
 
 	},
-	computed: {},
-	created() {
+	data: {
+		chipsInitial: ["hallo.de", "123.123.123.123", "2001:cdba:0000:0000:0000:0000:3257:9652"]
 	},
-	mounted() {
-
-	}
+	computed: {},
+	created() {},
+	mounted() {}
 })
