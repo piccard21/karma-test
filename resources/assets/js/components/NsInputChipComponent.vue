@@ -3,7 +3,6 @@
 		<chip class="" v-for="(chip, i) in chips"
 		      :key="i"
 		      :chip-type="chipType"
-		      :name="name"
 		      :chip-value="chip"
 		      @chip-delete="removeChip(i)">{{ chip }}
 		</chip>
@@ -13,6 +12,10 @@
 		       @keyup.space="addChip($event.target.value)"
 		       :disabled="isInputDisabled"
 		       ref="inputchip">
+
+		<input v-for="(chip, i) in chips":key="i" type="hidden" :name="name" :value="chip">
+
+
 	</div>
 </template>
 
@@ -35,7 +38,7 @@
 			},
 			name: {
 				type: String,
-				default: 'whatever'
+				default: 'whatever[]'
 			}
 		},
 		data() {
@@ -52,16 +55,20 @@
 		computed: {
 			now: function () {
 				return Date.now()
+			},
+			hiddenInputFieldName: function() {
+				return new Date().getTime();
 			}
 		},
 		methods: {
-			addHiddenInputField(chipValue) {
-				let hiddenInput = document.createElement('input');
-				hiddenInput.type = 'hidden';
-				hiddenInput.name = this.name+"[]";
-				hiddenInput.value = chipValue;
-				this.$refs.chipWrapper.appendChild(hiddenInput);
-			},
+			// addHiddenInputField(chipValue, index) {
+			// 	let hiddenInput = document.createElement('input');
+			// 	hiddenInput.type = 'hidden';
+			// 	hiddenInput.name = this.name+"[]";
+			// 	hiddenInput.value = chipValue;
+			// 	hiddenInput.setAttribute("data-index", index);
+			// 	this.$refs.chipWrapper.appendChild(hiddenInput);
+			// },
 
 			addChip(chipValue) {
 				chipValue = chipValue.trim();
@@ -71,8 +78,6 @@
 					this.chips.push(chipValue);
 					this.$emit("chip-added", chipValue);
 					this.$emit("chips-changed", this.chips);
-
-					this.addHiddenInputField(chipValue);
 				}
 
 				this.checkInputField();

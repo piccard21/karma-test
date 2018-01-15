@@ -41,7 +41,7 @@
 		<div class="form-group">
 			<label for="input-chip-component-basic" style="display: block">Input-Chip: empty</label>
 			<div id="input-chip-component-basic">
-				<ns-input-chip name="nameserverWhatever" chip-type="info" @chip-error="chipErrorCb" @chip-add="chipAddCb" @chip-added="chipAddedCb" @chips-changed="chipsChangedCb"  @chip-delete="chipDeleteCb" @chip-deleted="chipDeletedCb"></ns-input-chip>
+				<ns-input-chip name="nameserverWhatever[]" chip-type="info" @chip-error="chipErrorCb" @chip-add="chipAddCb" @chip-added="chipAddedCb" @chips-changed="chipsChangedCb"  @chip-delete="chipDeleteCb" @chip-deleted="chipDeletedCb"></ns-input-chip>
 			</div>
 			<small id="" class="chip-hint">Lorem ipsum dolor set amed</small>
 		</div>
