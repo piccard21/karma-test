@@ -50138,7 +50138,7 @@ exports = module.exports = __webpack_require__(3)(undefined);
 
 
 // module
-exports.push([module.i, "\n.chip-wrapper {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t    -ms-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-pack: start;\n\t    -ms-flex-pack: start;\n\t        justify-content: flex-start;\n\t-ms-flex-wrap: wrap;\n\t    flex-wrap: wrap;\n}\n.chip-input {\n\t-webkit-box-flex: 1;\n\t    -ms-flex: 1;\n\t        flex: 1;\n\tmin-width: 210px;\n\tborder: none !important;\n\tmargin-left: 8px;\n}\n.chip-input:focus {\n\t-webkit-box-shadow: none !important;\n\t        box-shadow: none !important;\n\tcolor: #495057;\n\tbackground-color: #fff;\n\tborder-color: #80bdff;\n\toutline: none;\n}\n", ""]);
+exports.push([module.i, "\n.chip-wrapper {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t    -ms-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-pack: start;\n\t    -ms-flex-pack: start;\n\t        justify-content: flex-start;\n\t-ms-flex-wrap: wrap;\n\t    flex-wrap: wrap;\n}\n.chip-input {\n\t-webkit-box-flex: 1;\n\t    -ms-flex: 1;\n\t        flex: 1;\n\tmin-width: 210px;\n\tborder: none !important;\n\tmargin-left: 8px;\n\tbackground: #fff;\n}\n.chip-input:focus {\n\t-webkit-box-shadow: none !important;\n\t        box-shadow: none !important;\n\tcolor: #495057;\n\tbackground-color: #fff;\n\tborder-color: #80bdff;\n\toutline: none;\n}\n", ""]);
 
 // exports
 
@@ -50174,6 +50174,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -50188,13 +50190,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		chipType: {
 			type: String,
 			default: 'info'
+		},
+		name: {
+			type: String,
+			default: 'nsInputChips[]'
 		}
 	},
 	data: function data() {
 		return {
 			chips: [],
 			isInputDisabled: false,
-			inputFieldPlaceholder: "Enter ..."
+			inputFieldPlaceholder: ["domain: example.com", "ipv4: 123.123.123.123", "ipv6: 2001:cdba:0000:0000:0000:0000:3257:9652"]
 		};
 	},
 
@@ -50215,14 +50221,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}
 
 			this.checkInputField();
-
-			console.error(this.$refs.inputchip);
-
 			this.$refs.inputchip.value = "";
 			return true;
 		},
 		removeChip: function removeChip(chipIndex) {
-
 			var chipInfo = {
 				index: chipIndex,
 				value: this.chips[chipIndex]
@@ -50275,7 +50277,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				this.$refs.inputchip.placeholder = "";
 			} else {
 				this.isInputDisabled = false;
-				this.$refs.inputchip.placeholder = this.inputFieldPlaceholder;
+				this.$refs.inputchip.placeholder = this.inputFieldPlaceholder[this.chips.length];
 			}
 		}
 	},
@@ -50319,7 +50321,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "chip-wrapper form-control" },
+    { ref: "chipWrapper", staticClass: "chip-wrapper form-control" },
     [
       _vm._l(_vm.chips, function(chip, i) {
         return _c(
@@ -50340,11 +50342,7 @@ var render = function() {
       _c("input", {
         ref: "inputchip",
         staticClass: "chip-input",
-        attrs: {
-          type: "text",
-          placeholder: "Enter ...",
-          disabled: _vm.isInputDisabled
-        },
+        attrs: { type: "text", disabled: _vm.isInputDisabled },
         on: {
           keyup: [
             function($event) {
@@ -50367,6 +50365,14 @@ var render = function() {
             }
           ]
         }
+      }),
+      _vm._v(" "),
+      _vm._l(_vm.chips, function(chip, i) {
+        return _c("input", {
+          key: "input" + chip,
+          attrs: { type: "hidden", name: _vm.name },
+          domProps: { value: chip }
+        })
       })
     ],
     2
