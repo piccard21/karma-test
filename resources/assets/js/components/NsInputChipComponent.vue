@@ -1,8 +1,9 @@
 <template>
-	<div class="chip-wrapper form-control">
+	<div class="chip-wrapper form-control" ref="chipWrapper">
 		<chip class="" v-for="(chip, i) in chips"
 		      :key="i"
 		      :chip-type="chipType"
+		      :name="name"
 		      :chip-value="chip"
 		      @chip-delete="removeChip(i)">{{ chip }}
 		</chip>
@@ -10,7 +11,6 @@
 		       type="text"
 		       @keyup.enter="addChip($event.target.value)"
 		       @keyup.space="addChip($event.target.value)"
-		       placeholder="Enter ..."
 		       :disabled="isInputDisabled"
 		       ref="inputchip">
 	</div>
@@ -32,13 +32,21 @@
 			chipType: {
 				type: String,
 				default: 'info'
+			},
+			name: {
+				type: String,
+				default: 'whatever'
 			}
 		},
 		data() {
 			return {
 				chips: [],
 				isInputDisabled: false,
-				inputFieldPlaceholder: "Enter ..."
+				inputFieldPlaceholder: [
+					"domain: example.com",
+					"ipv4: 123.123.123.123",
+					"ipv6: 2001:cdba:0000:0000:0000:0000:3257:9652",
+				]
 			}
 		},
 		computed: {
@@ -47,6 +55,14 @@
 			}
 		},
 		methods: {
+			addHiddenInputField(chipValue) {
+				let hiddenInput = document.createElement('input');
+				hiddenInput.type = 'hidden';
+				hiddenInput.name = this.name+"[]";
+				hiddenInput.value = chipValue;
+				this.$refs.chipWrapper.appendChild(hiddenInput);
+			},
+
 			addChip(chipValue) {
 				chipValue = chipValue.trim();
 
@@ -55,21 +71,15 @@
 					this.chips.push(chipValue);
 					this.$emit("chip-added", chipValue);
 					this.$emit("chips-changed", this.chips);
+
+					this.addHiddenInputField(chipValue);
 				}
 
-
 				this.checkInputField();
-
-
-				console.error(this.$refs.inputchip)
-
-
 				this.$refs.inputchip.value = "";
 				return true;
-
 			},
 			removeChip(chipIndex) {
-
 				let chipInfo = {
 					index: chipIndex,
 					value: this.chips[chipIndex]
@@ -79,7 +89,6 @@
 				this.chips.splice(chipIndex);
 				this.$emit("chip-deleted", chipInfo);
 				this.$emit("chips-changed", this.chips);
-
 
 				this.checkInputField();
 			},
@@ -124,7 +133,7 @@
 				}
 				else {
 					this.isInputDisabled = false;
-					this.$refs.inputchip.placeholder = this.inputFieldPlaceholder;
+					this.$refs.inputchip.placeholder = this.inputFieldPlaceholder[this.chips.length];
 				}
 			}
 		},
