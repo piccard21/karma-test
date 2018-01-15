@@ -13,8 +13,7 @@
 		       :disabled="isInputDisabled"
 		       ref="inputchip">
 
-		<input v-for="(chip, i) in chips":key="i" type="hidden" :name="name" :value="chip">
-
+		<input v-for="(chip, i) in chips":key="chip" type="hidden" :name="name" :value="chip">
 
 	</div>
 </template>
@@ -55,21 +54,9 @@
 		computed: {
 			now: function () {
 				return Date.now()
-			},
-			hiddenInputFieldName: function() {
-				return new Date().getTime();
 			}
 		},
 		methods: {
-			// addHiddenInputField(chipValue, index) {
-			// 	let hiddenInput = document.createElement('input');
-			// 	hiddenInput.type = 'hidden';
-			// 	hiddenInput.name = this.name+"[]";
-			// 	hiddenInput.value = chipValue;
-			// 	hiddenInput.setAttribute("data-index", index);
-			// 	this.$refs.chipWrapper.appendChild(hiddenInput);
-			// },
-
 			addChip(chipValue) {
 				chipValue = chipValue.trim();
 
@@ -165,6 +152,7 @@
 		min-width: 210px;
 		border: none !important;
 		margin-left: 8px;
+		background: #fff;
 	}
 
 	.chip-input:focus {
