@@ -13,7 +13,7 @@
 		       :disabled="isInputDisabled"
 		       ref="inputchip">
 
-		<input v-for="(chip, i) in chips":key="chip" type="hidden" :name="name" :value="chip">
+		<input v-for="(chip, i) in chips" :key="chip" type="hidden" :name="name" :value="chip">
 
 	</div>
 </template>
@@ -37,7 +37,7 @@
 			},
 			name: {
 				type: String,
-				default: 'whatever[]'
+				default: 'nsInputChips[]'
 			}
 		},
 		data() {
