@@ -11,6 +11,7 @@
 		       @keyup.enter="addChip($event.target.value)"
 		       @keyup.space="addChip($event.target.value)"
 		       placeholder="Enter ..."
+		       :disabled="isInputDisabled"
 		       ref="inputchip">
 	</div>
 </template>
@@ -35,7 +36,9 @@
 		},
 		data() {
 			return {
-				chips: []
+				chips: [],
+				isInputDisabled: false,
+				inputFieldPlaceholder: "Enter ..."
 			}
 		},
 		computed: {
@@ -47,19 +50,22 @@
 			addChip(chipValue) {
 				chipValue = chipValue.trim();
 
-				if (chipValue.length < 1 || this.chips.length > 4) {
-					this.$refs.inputchip.value = "";
-					return;
-				}
-
-				if (this.checkChip(chipValue)) {
+				if (this.chips.length <= 3 && this.checkChip(chipValue)) {
 					this.$emit("chip-add", chipValue);
 					this.chips.push(chipValue);
 					this.$emit("chip-added", chipValue);
 					this.$emit("chips-changed", this.chips);
 				}
 
+
+				this.checkInputField();
+
+
+				console.error(this.$refs.inputchip)
+
+
 				this.$refs.inputchip.value = "";
+				return true;
 
 			},
 			removeChip(chipIndex) {
@@ -73,10 +79,13 @@
 				this.chips.splice(chipIndex);
 				this.$emit("chip-deleted", chipInfo);
 				this.$emit("chips-changed", this.chips);
+
+
+				this.checkInputField();
 			},
 			checkChip(chipValue) {
-
 				let errorMsg = null;
+
 				switch (this.chips.length) {
 					case 0:
 						// hostname must be valid
@@ -107,6 +116,16 @@
 					return false;
 				}
 				return true;
+			},
+			checkInputField() {
+				if (this.chips.length >= 3) {
+					this.isInputDisabled = true;
+					this.$refs.inputchip.placeholder = "";
+				}
+				else {
+					this.isInputDisabled = false;
+					this.$refs.inputchip.placeholder = this.inputFieldPlaceholder;
+				}
 			}
 		},
 		mounted() {

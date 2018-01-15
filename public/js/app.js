@@ -50173,6 +50173,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -50191,7 +50192,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	data: function data() {
 		return {
-			chips: []
+			chips: [],
+			isInputDisabled: false,
+			inputFieldPlaceholder: "Enter ..."
 		};
 	},
 
@@ -50204,19 +50207,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		addChip: function addChip(chipValue) {
 			chipValue = chipValue.trim();
 
-			if (chipValue.length < 1 || this.chips.length > 4) {
-				this.$refs.inputchip.value = "";
-				return;
-			}
-
-			if (this.checkChip(chipValue)) {
+			if (this.chips.length <= 3 && this.checkChip(chipValue)) {
 				this.$emit("chip-add", chipValue);
 				this.chips.push(chipValue);
 				this.$emit("chip-added", chipValue);
 				this.$emit("chips-changed", this.chips);
 			}
 
+			this.checkInputField();
+
+			console.error(this.$refs.inputchip);
+
 			this.$refs.inputchip.value = "";
+			return true;
 		},
 		removeChip: function removeChip(chipIndex) {
 
@@ -50229,10 +50232,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.chips.splice(chipIndex);
 			this.$emit("chip-deleted", chipInfo);
 			this.$emit("chips-changed", this.chips);
+
+			this.checkInputField();
 		},
 		checkChip: function checkChip(chipValue) {
-
 			var errorMsg = null;
+
 			switch (this.chips.length) {
 				case 0:
 					// hostname must be valid
@@ -50263,6 +50268,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				return false;
 			}
 			return true;
+		},
+		checkInputField: function checkInputField() {
+			if (this.chips.length >= 3) {
+				this.isInputDisabled = true;
+				this.$refs.inputchip.placeholder = "";
+			} else {
+				this.isInputDisabled = false;
+				this.$refs.inputchip.placeholder = this.inputFieldPlaceholder;
+			}
 		}
 	},
 	mounted: function mounted() {
@@ -50326,7 +50340,11 @@ var render = function() {
       _c("input", {
         ref: "inputchip",
         staticClass: "chip-input",
-        attrs: { type: "text", placeholder: "Enter ..." },
+        attrs: {
+          type: "text",
+          placeholder: "Enter ...",
+          disabled: _vm.isInputDisabled
+        },
         on: {
           keyup: [
             function($event) {
