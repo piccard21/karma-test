@@ -26,13 +26,12 @@
 
 		{{--input-chip-component: EMPTY--}}
 		{{--<div class="form-group">--}}
-			{{--<label for="input-chip-component-basic" style="display: block">Input-Chip: empty</label>--}}
-			{{--<div id="input-chip-component-basic">--}}
-				{{--<input-chip chip-type="warning" @chip-add="chipAddCb" @chip-added="chipAddedCb" @chips-changed="chipsChangedCb"  @chip-delete="chipDeleteCb" @chip-deleted="chipDeletedCb"></input-chip>--}}
-			{{--</div>--}}
-			{{--<small id="" class="chip-hint">Lorem ipsum dolor set amed</small>--}}
+		{{--<label for="input-chip-component-basic" style="display: block">Input-Chip: empty</label>--}}
+		{{--<div id="input-chip-component-basic">--}}
+		{{--<input-chip chip-type="warning" @chip-add="chipAddCb" @chip-added="chipAddedCb" @chips-changed="chipsChangedCb"  @chip-delete="chipDeleteCb" @chip-deleted="chipDeletedCb"></input-chip>--}}
 		{{--</div>--}}
-
+		{{--<small id="" class="chip-hint">Lorem ipsum dolor set amed</small>--}}
+		{{--</div>--}}
 
 
 		<h3>NsInputChip</h3>
@@ -41,7 +40,16 @@
 		<div class="form-group">
 			<label for="input-chip-component-basic" style="display: block">Input-Chip: empty</label>
 			<div id="input-chip-component-basic">
-				<ns-input-chip v-model="nsChips" name="nameserver[]" chip-type="info" @chip-error="chipErrorCb" @chip-add="chipAddCb" @chip-added="chipAddedCb" @chips-changed="chipsChangedCb"  @chip-delete="chipDeleteCb" @chip-deleted="chipDeletedCb"></ns-input-chip>
+				<ns-input-chip v-model="nsChips"
+				               name="nameserver[]"
+				               chip-type="info"
+				               @chip-error="chipErrorCb"
+				               @chip-add="chipAddCb"
+				               @chip-added="chipAddedCb"
+				               @chips-changed="chipsChangedCb"
+				               @chip-delete="chipDeleteCb"
+				               @chip-deleted="chipDeletedCb">
+				</ns-input-chip>
 			</div>
 			<small id="" class="chip-hint">Lorem ipsum dolor set amed</small>
 		</div>

@@ -50213,19 +50213,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 
 	computed: {
-		now: function now() {
-			return Date.now();
+		currentChips: function currentChips() {
+			return this.chips;
 		}
 	},
 	methods: {
 		addChip: function addChip(chipValue) {
 			chipValue = chipValue.trim();
 
-			if (this.chips.length <= 3 && this.checkChip(chipValue)) {
+			if (this.currentChips.length <= 3 && this.checkChip(chipValue)) {
 				this.$emit("chip-add", chipValue);
-				this.chips.push(chipValue);
+				this.currentChips.push(chipValue);
 				this.$emit("chip-added", chipValue);
-				this.$emit("chips-changed", this.chips);
+				this.$emit("chips-changed", this.currentChips);
 			}
 
 			this.checkInputField();
@@ -50239,16 +50239,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			};
 
 			this.$emit("chip-delete", chipInfo);
-			this.chips.splice(chipIndex);
+			this.currentChips.splice(chipIndex);
 			this.$emit("chip-deleted", chipInfo);
-			this.$emit("chips-changed", this.chips);
+			this.$emit("chips-changed", this.currentChips);
 
 			this.checkInputField();
 		},
 		checkChip: function checkChip(chipValue) {
 			var errorMsg = null;
 
-			switch (this.chips.length) {
+			switch (this.currentChips.length) {
 				case 0:
 					// hostname must be valid
 					if (!__WEBPACK_IMPORTED_MODULE_1_parse_domain___default()(chipValue)) {
@@ -50280,12 +50280,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			return true;
 		},
 		checkInputField: function checkInputField() {
-			if (this.chips.length >= 3) {
+			if (this.currentChips.length >= 3) {
 				this.isInputDisabled = true;
 				this.$refs.inputchip.placeholder = "";
 			} else {
 				this.isInputDisabled = false;
-				this.$refs.inputchip.placeholder = this.inputFieldPlaceholder[this.chips.length];
+				this.$refs.inputchip.placeholder = this.inputFieldPlaceholder[this.currentChips.length];
 			}
 		}
 	}
@@ -50310,7 +50310,7 @@ var render = function() {
     "div",
     { ref: "chipWrapper", staticClass: "chip-wrapper form-control" },
     [
-      _vm._l(_vm.chips, function(chip, i) {
+      _vm._l(_vm.currentChips, function(chip, i) {
         return _c(
           "chip",
           {
@@ -50354,7 +50354,7 @@ var render = function() {
         }
       }),
       _vm._v(" "),
-      _vm._l(_vm.chips, function(chip, i) {
+      _vm._l(_vm.currentChips, function(chip, i) {
         return _c("input", {
           key: "input" + chip,
           attrs: { type: "hidden", name: _vm.name },

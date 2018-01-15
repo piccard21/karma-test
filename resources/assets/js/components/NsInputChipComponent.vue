@@ -1,6 +1,6 @@
 <template>
 	<div class="chip-wrapper form-control" ref="chipWrapper">
-		<chip class="" v-for="(chip, i) in chips"
+		<chip class="" v-for="(chip, i) in currentChips"
 		      :key="i"
 		      :chip-type="chipType"
 		      :chip-value="chip"
@@ -13,7 +13,7 @@
 		       :disabled="isInputDisabled"
 		       ref="inputchip">
 
-		<input v-for="(chip, i) in chips" :key="'input' + chip" type="hidden" :name="name" :value="chip">
+		<input v-for="(chip, i) in currentChips" :key="'input' + chip" type="hidden" :name="name" :value="chip">
 
 	</div>
 </template>
@@ -61,19 +61,19 @@
 			}
 		},
 		computed: {
-			now: function () {
-				return Date.now()
+			currentChips: function () {
+				return this.chips
 			}
 		},
 		methods: {
 			addChip(chipValue) {
 				chipValue = chipValue.trim();
 
-				if (this.chips.length <= 3 && this.checkChip(chipValue)) {
+				if (this.currentChips.length <= 3 && this.checkChip(chipValue)) {
 					this.$emit("chip-add", chipValue);
-					this.chips.push(chipValue);
+					this.currentChips.push(chipValue);
 					this.$emit("chip-added", chipValue);
-					this.$emit("chips-changed", this.chips);
+					this.$emit("chips-changed", this.currentChips);
 				}
 
 				this.checkInputField();
@@ -87,16 +87,16 @@
 				};
 
 				this.$emit("chip-delete", chipInfo);
-				this.chips.splice(chipIndex);
+				this.currentChips.splice(chipIndex);
 				this.$emit("chip-deleted", chipInfo);
-				this.$emit("chips-changed", this.chips);
+				this.$emit("chips-changed", this.currentChips);
 
 				this.checkInputField();
 			},
 			checkChip(chipValue) {
 				let errorMsg = null;
 
-				switch (this.chips.length) {
+				switch (this.currentChips.length) {
 					case 0:
 						// hostname must be valid
 						if (!parseDomain(chipValue)) {
@@ -128,13 +128,13 @@
 				return true;
 			},
 			checkInputField() {
-				if (this.chips.length >= 3) {
+				if (this.currentChips.length >= 3) {
 					this.isInputDisabled = true;
 					this.$refs.inputchip.placeholder = "";
 				}
 				else {
 					this.isInputDisabled = false;
-					this.$refs.inputchip.placeholder = this.inputFieldPlaceholder[this.chips.length];
+					this.$refs.inputchip.placeholder = this.inputFieldPlaceholder[this.currentChips.length];
 				}
 			}
 		},
