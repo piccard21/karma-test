@@ -1686,7 +1686,7 @@ new Vue({
 		}
 	},
 	data: {
-		chipsInitial: ["hallo.de", "123.123.123.123", "2001:cdba:0000:0000:0000:0000:3257:9652"]
+		nsChips: ["hallo.de", "123.123.123.123", "2001:cdba:0000:0000:0000:0000:3257:9652"]
 	},
 	computed: {},
 	created: function created() {},
@@ -49934,7 +49934,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			type: String,
 			required: true
 		}
-
 	},
 	methods: {
 		deleteChip: function deleteChip() {
@@ -50186,7 +50185,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	components: {
 		Chip: __WEBPACK_IMPORTED_MODULE_0__ChipComponent_vue___default.a
 	},
+	model: {
+		prop: 'chips',
+		event: 'chips-changed'
+	},
 	props: {
+		chips: {
+			type: Array,
+			default: function _default() {
+				return [];
+			}
+		},
 		chipType: {
 			type: String,
 			default: 'info'
@@ -50198,7 +50207,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	data: function data() {
 		return {
-			chips: [],
 			isInputDisabled: false,
 			inputFieldPlaceholder: ["domain: example.com", "ipv4: 123.123.123.123", "ipv6: 2001:cdba:0000:0000:0000:0000:3257:9652"]
 		};
@@ -50280,35 +50288,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				this.$refs.inputchip.placeholder = this.inputFieldPlaceholder[this.chips.length];
 			}
 		}
-	},
-	mounted: function mounted() {
-		var _iteratorNormalCompletion = true;
-		var _didIteratorError = false;
-		var _iteratorError = undefined;
-
-		try {
-			for (var _iterator = this.$root.$data.chipsInitial[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-				var chip = _step.value;
-
-				if (typeof chip === 'string') {
-					this.addChip(chip);
-				}
-			}
-		} catch (err) {
-			_didIteratorError = true;
-			_iteratorError = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion && _iterator.return) {
-					_iterator.return();
-				}
-			} finally {
-				if (_didIteratorError) {
-					throw _iteratorError;
-				}
-			}
-		}
 	}
+	// mounted() {
+	// 	for (let chip of this.$root.$data.chipsInitial) {
+	// 		if (typeof chip === 'string') {
+	// 			this.addChip(chip);
+	// 		}
+	// 	}
+	// }
 });
 
 /***/ }),

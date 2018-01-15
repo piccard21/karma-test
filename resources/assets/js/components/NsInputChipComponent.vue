@@ -30,7 +30,17 @@
 		components: {
 			Chip
 		},
+		model: {
+			prop: 'chips',
+			event: 'chips-changed'
+		},
 		props: {
+			chips: {
+				type: Array,
+				default: function () {
+					return [];
+				}
+			},
 			chipType: {
 				type: String,
 				default: 'info'
@@ -42,7 +52,6 @@
 		},
 		data() {
 			return {
-				chips: [],
 				isInputDisabled: false,
 				inputFieldPlaceholder: [
 					"domain: example.com",
@@ -129,13 +138,13 @@
 				}
 			}
 		},
-		mounted() {
-			for (let chip of this.$root.$data.chipsInitial) {
-				if (typeof chip === 'string') {
-					this.addChip(chip);
-				}
-			}
-		}
+		// mounted() {
+		// 	for (let chip of this.$root.$data.chipsInitial) {
+		// 		if (typeof chip === 'string') {
+		// 			this.addChip(chip);
+		// 		}
+		// 	}
+		// }
 	}
 </script>
 

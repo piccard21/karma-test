@@ -24,7 +24,6 @@
 				type: String,
 				required: true
 			}
-
 		},
 		methods: {
 			deleteChip() {
