@@ -1,6 +1,6 @@
 <template>
-	<div class="chip-wrapper form-control">
-		<chip class="" v-for="(chip, i) in chips"
+	<div class="chip-wrapper form-control" ref="chipWrapper">
+		<chip class="" v-for="(chip, i) in currentChips"
 		      :key="i"
 		      :chip-type="chipType"
 		      :chip-value="chip"
@@ -10,8 +10,11 @@
 		       type="text"
 		       @keyup.enter="addChip($event.target.value)"
 		       @keyup.space="addChip($event.target.value)"
-		       placeholder="Enter ..."
+		       :disabled="isInputDisabled"
 		       ref="inputchip">
+
+		<input v-for="(chip, i) in currentChips" :key="'input' + chip" type="hidden" :name="name" :value="chip">
+
 	</div>
 </template>
 
@@ -25,36 +28,54 @@
 		components: {
 			Chip
 		},
+		model: {
+			prop: 'chips',
+			event: 'chips-changed'
+		},
 		props: {
+			chips: {
+				type: Array,
+				default: function () {
+					return [];
+				}
+			},
 			chipType: {
 				type: String,
 				default: 'info'
+			},
+			name: {
+				type: String,
+				default: 'nsInputChips[]'
 			}
 		},
 		data() {
 			return {
-				chips: []
+				isInputDisabled: false,
+				inputFieldPlaceholder: [
+					"domain: example.com",
+					"ipv4: 123.123.123.123",
+					"ipv6: 2001:cdba:0000:0000:0000:0000:3257:9652",
+				]
+			}
+		},
+		computed: {
+			currentChips: function () {
+				return this.chips
 			}
 		},
 		methods: {
 			addChip(chipValue) {
 				chipValue = chipValue.trim();
 
-				if (chipValue.length < 1) {
-					this.$refs.inputchip.value = "";
-					return;
-				}
-
 				this.$emit("chip-add", chipValue);
-				this.chips.push(chipValue);
+				this.currentChips.push(chipValue);
 				this.$emit("chip-added", chipValue);
-				this.$emit("chips-changed", this.chips);
+				this.$emit("chips-changed", this.currentChips);
 
 				this.$refs.inputchip.value = "";
-
+				return true;
 			},
 			removeChip(chipIndex) {
-
 				let chipInfo = {
 					index: chipIndex,
 					value: this.chips[chipIndex]
@@ -63,14 +84,8 @@
 				this.$emit("chip-delete", chipInfo);
 				this.chips.splice(chipIndex, 1);
 				this.$emit("chip-deleted", chipInfo);
-				this.$emit("chips-changed", this.chips);
-			}
-		},
-		mounted() {
-			for (let chip of this.$root.$data.chipsInitial) {
-				if (typeof chip === 'string') {
-					this.addChip(chip);
-				}
+				this.$emit("chips-changed", this.currentChips);
+
 			}
 		}
 	}
@@ -89,6 +104,7 @@
 		min-width: 210px;
 		border: none !important;
 		margin-left: 8px;
+		background: #fff;
 	}
 
 	.chip-input:focus {

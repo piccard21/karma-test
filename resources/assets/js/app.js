@@ -49,21 +49,21 @@ import NsInputChip from './components/NsInputChipComponent.vue';
 new Vue({
 	el: "#app",
 	components: {
-		Whatever,
-		Sloty,
-		AppLayout,
-		ScopedSlot,
-		TaskList,
-		PassDown,
-		PropValidation,
-		BsAlert,
-		TabsEx,
-		ButtonCounter,
-		ShareAnInstance,
-		ShareAnotherInstance,
-		Ajax,
+		// Whatever,
+		// Sloty,
+		// AppLayout,
+		// ScopedSlot,
+		// TaskList,
+		// PassDown,
+		// PropValidation,
+		// BsAlert,
+		// TabsEx,
+		// ButtonCounter,
+		// ShareAnInstance,
+		// ShareAnotherInstance,
+		// Ajax,
 		InputChip,
-		NsInputChip
+		// NsInputChip
 
 	},
 	methods: {

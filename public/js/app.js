@@ -1648,21 +1648,21 @@ window.Event = new (function () {
 new Vue({
 	el: "#app",
 	components: {
-		Whatever: __WEBPACK_IMPORTED_MODULE_0__components_Whatever01_vue___default.a,
-		Sloty: __WEBPACK_IMPORTED_MODULE_1__components_Whatever02_vue___default.a,
-		AppLayout: __WEBPACK_IMPORTED_MODULE_2__components_Whatever03_vue___default.a,
-		ScopedSlot: __WEBPACK_IMPORTED_MODULE_3__components_Whatever04_vue___default.a,
-		TaskList: __WEBPACK_IMPORTED_MODULE_4__components_Whatever06_vue___default.a,
-		PassDown: __WEBPACK_IMPORTED_MODULE_5__components_Whatever08_vue___default.a,
-		PropValidation: __WEBPACK_IMPORTED_MODULE_6__components_Whatever10_vue___default.a,
-		BsAlert: __WEBPACK_IMPORTED_MODULE_7__components_Whatever12_vue___default.a,
-		TabsEx: __WEBPACK_IMPORTED_MODULE_8__components_Whatever13_vue___default.a,
-		ButtonCounter: __WEBPACK_IMPORTED_MODULE_9__components_Whatever14_vue___default.a,
-		ShareAnInstance: __WEBPACK_IMPORTED_MODULE_10__components_Whatever16_vue___default.a,
-		ShareAnotherInstance: __WEBPACK_IMPORTED_MODULE_11__components_Whatever17_vue___default.a,
-		Ajax: __WEBPACK_IMPORTED_MODULE_12__components_Whatever18_vue___default.a,
-		InputChip: __WEBPACK_IMPORTED_MODULE_13__components_InputChipComponent_vue___default.a,
-		NsInputChip: __WEBPACK_IMPORTED_MODULE_14__components_NsInputChipComponent_vue___default.a
+		// Whatever,
+		// Sloty,
+		// AppLayout,
+		// ScopedSlot,
+		// TaskList,
+		// PassDown,
+		// PropValidation,
+		// BsAlert,
+		// TabsEx,
+		// ButtonCounter,
+		// ShareAnInstance,
+		// ShareAnotherInstance,
+		// Ajax,
+		InputChip: __WEBPACK_IMPORTED_MODULE_13__components_InputChipComponent_vue___default.a
+		// NsInputChip
 
 	},
 	methods: {
@@ -49752,7 +49752,7 @@ exports = module.exports = __webpack_require__(3)(undefined);
 
 
 // module
-exports.push([module.i, "\n.chip-wrapper {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t    -ms-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-pack: start;\n\t    -ms-flex-pack: start;\n\t        justify-content: flex-start;\n\t-ms-flex-wrap: wrap;\n\t    flex-wrap: wrap;\n}\n.chip-input {\n\t-webkit-box-flex: 1;\n\t    -ms-flex: 1;\n\t        flex: 1;\n\tmin-width: 210px;\n\tborder: none !important;\n\tmargin-left: 8px;\n}\n.chip-input:focus {\n\t-webkit-box-shadow: none !important;\n\t        box-shadow: none !important;\n\tcolor: #495057;\n\tbackground-color: #fff;\n\tborder-color: #80bdff;\n\toutline: none;\n}\n", ""]);
+exports.push([module.i, "\n.chip-wrapper {\n\tdisplay: -webkit-box;\n\tdisplay: -ms-flexbox;\n\tdisplay: flex;\n\t-webkit-box-orient: horizontal;\n\t-webkit-box-direction: normal;\n\t    -ms-flex-direction: row;\n\t        flex-direction: row;\n\t-webkit-box-pack: start;\n\t    -ms-flex-pack: start;\n\t        justify-content: flex-start;\n\t-ms-flex-wrap: wrap;\n\t    flex-wrap: wrap;\n}\n.chip-input {\n\t-webkit-box-flex: 1;\n\t    -ms-flex: 1;\n\t        flex: 1;\n\tmin-width: 210px;\n\tborder: none !important;\n\tmargin-left: 8px;\n\tbackground: #fff;\n}\n.chip-input:focus {\n\t-webkit-box-shadow: none !important;\n\t        box-shadow: none !important;\n\tcolor: #495057;\n\tbackground-color: #fff;\n\tborder-color: #80bdff;\n\toutline: none;\n}\n", ""]);
 
 // exports
 
@@ -49783,6 +49783,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -49791,36 +49794,51 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	components: {
 		Chip: __WEBPACK_IMPORTED_MODULE_0__ChipComponent_vue___default.a
 	},
+	model: {
+		prop: 'chips',
+		event: 'chips-changed'
+	},
 	props: {
+		chips: {
+			type: Array,
+			default: function _default() {
+				return [];
+			}
+		},
 		chipType: {
 			type: String,
 			default: 'info'
+		},
+		name: {
+			type: String,
+			default: 'nsInputChips[]'
 		}
 	},
 	data: function data() {
 		return {
-			chips: []
+			isInputDisabled: false,
+			inputFieldPlaceholder: ["domain: example.com", "ipv4: 123.123.123.123", "ipv6: 2001:cdba:0000:0000:0000:0000:3257:9652"]
 		};
 	},
 
+	computed: {
+		currentChips: function currentChips() {
+			return this.chips;
+		}
+	},
 	methods: {
 		addChip: function addChip(chipValue) {
 			chipValue = chipValue.trim();
 
-			if (chipValue.length < 1) {
-				this.$refs.inputchip.value = "";
-				return;
-			}
-
 			this.$emit("chip-add", chipValue);
-			this.chips.push(chipValue);
+			this.currentChips.push(chipValue);
 			this.$emit("chip-added", chipValue);
-			this.$emit("chips-changed", this.chips);
+			this.$emit("chips-changed", this.currentChips);
 
 			this.$refs.inputchip.value = "";
+			return true;
 		},
 		removeChip: function removeChip(chipIndex) {
-
 			var chipInfo = {
 				index: chipIndex,
 				value: this.chips[chipIndex]
@@ -49829,35 +49847,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			this.$emit("chip-delete", chipInfo);
 			this.chips.splice(chipIndex, 1);
 			this.$emit("chip-deleted", chipInfo);
-			this.$emit("chips-changed", this.chips);
-		}
-	},
-	mounted: function mounted() {
-		var _iteratorNormalCompletion = true;
-		var _didIteratorError = false;
-		var _iteratorError = undefined;
-
-		try {
-			for (var _iterator = this.$root.$data.chipsInitial[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-				var chip = _step.value;
-
-				if (typeof chip === 'string') {
-					this.addChip(chip);
-				}
-			}
-		} catch (err) {
-			_didIteratorError = true;
-			_iteratorError = err;
-		} finally {
-			try {
-				if (!_iteratorNormalCompletion && _iterator.return) {
-					_iterator.return();
-				}
-			} finally {
-				if (_didIteratorError) {
-					throw _iteratorError;
-				}
-			}
+			this.$emit("chips-changed", this.currentChips);
 		}
 	}
 });
@@ -49991,9 +49981,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "chip-wrapper form-control" },
+    { ref: "chipWrapper", staticClass: "chip-wrapper form-control" },
     [
-      _vm._l(_vm.chips, function(chip, i) {
+      _vm._l(_vm.currentChips, function(chip, i) {
         return _c(
           "chip",
           {
@@ -50012,7 +50002,7 @@ var render = function() {
       _c("input", {
         ref: "inputchip",
         staticClass: "chip-input",
-        attrs: { type: "text", placeholder: "Enter ..." },
+        attrs: { type: "text", disabled: _vm.isInputDisabled },
         on: {
           keyup: [
             function($event) {
@@ -50035,6 +50025,14 @@ var render = function() {
             }
           ]
         }
+      }),
+      _vm._v(" "),
+      _vm._l(_vm.currentChips, function(chip, i) {
+        return _c("input", {
+          key: "input" + chip,
+          attrs: { type: "hidden", name: _vm.name },
+          domProps: { value: chip }
+        })
       })
     ],
     2
@@ -50289,13 +50287,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			}
 		}
 	}
-	// mounted() {
-	// 	for (let chip of this.$root.$data.chipsInitial) {
-	// 		if (typeof chip === 'string') {
-	// 			this.addChip(chip);
-	// 		}
-	// 	}
-	// }
 });
 
 /***/ }),

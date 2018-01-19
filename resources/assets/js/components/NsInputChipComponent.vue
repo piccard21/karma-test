@@ -137,14 +137,7 @@
 					this.$refs.inputchip.placeholder = this.inputFieldPlaceholder[this.currentChips.length];
 				}
 			}
-		},
-		// mounted() {
-		// 	for (let chip of this.$root.$data.chipsInitial) {
-		// 		if (typeof chip === 'string') {
-		// 			this.addChip(chip);
-		// 		}
-		// 	}
-		// }
+		}
 	}
 </script>
 
